@@ -1,0 +1,41 @@
+:root {
+  --bodyBg: #D8DBE2;
+  --menuBg: #373F51;
+  --progressBar: #54d1db;
+}
+
+body {
+  background: var(--bodyBg) !important;
+}
+
+#menu {
+  background: var(--menuBg);
+}
+
+.ui.vertical.menu .item > i.icon {
+  float: left !important;
+  margin: 0 0.5em !important;
+}
+
+.ui.inverted.menu .active.item {
+  width: 310px !important;
+}
+
+.ui.inverted.menu .item, .ui.inverted.menu .item > a:not(.ui) {
+  width: 310px !important;
+}
+
+/* Overrides default styled accordion styles (too much bottom padding) */
+.ui.styled.accordion .content {
+  margin: 0;
+  padding: 0.5em 1em 0.75em !important;
+}
+
+.employeeCard {
+  margin: 10px !important;
+  width: 200px !important;
+}
+
+.form-required {
+  color: red !important;
+}

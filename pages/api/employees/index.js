@@ -9,7 +9,7 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const employees = await Employee.find({})
+                const employees = await Employee.find({}).sort({name: 'asc'})
                 res.status(200).json({success: true, data: employees})
             } catch (error) {
                 res.status(400).json({success: false})

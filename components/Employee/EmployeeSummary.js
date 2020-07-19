@@ -106,7 +106,7 @@ function EmployeeSummary({ employee}) {
                     </Item.Description>
                 </Item.Content>
             </Item>
-                <Link href={`/${employee._id}/edit`}>
+                <Link href={`/employee/${employee._id}/edit`}>
                     <Button icon color="blue">
                         <Icon name="edit"/>
                         Edit

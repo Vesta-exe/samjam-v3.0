@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import {Form, Input, Button, Header, Icon, Select, Loader} from 'semantic-ui-react'
-import baseUrl from '../../utils/baseUrl'
+import baseUrl from '../../../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
@@ -94,7 +94,7 @@ function EditEmployee({employee}) {
                 },
                 body: JSON.stringify(form)
             })
-            router.push(`/${employee._id}`)
+            router.push(`/employee/${employee._id}`)
         } catch (error) {
             console.log(error)
         }
@@ -460,7 +460,7 @@ function EditEmployee({employee}) {
                             />
                         </Form.Group>
                         </Form.Group>
-                        <Link href={`/${employee._id}`}>
+                        <Link href={`/employee/${employee._id}`}>
                             <Button color="red" icon labelPosition="left" floated="right">
                                 <Icon name="cancel"/>
                                 Cancel

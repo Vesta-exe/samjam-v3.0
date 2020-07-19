@@ -8,7 +8,7 @@ function EmployeeList({employees}) {
                 {employees.map(employee => {
                     return (
                         <div key={employee.id} className='employeeCard'>
-                            <Link href={`/${employee._id}`}>
+                            <Link href={`/employee/${employee._id}`}>
                                 <Card
                                     image= {employee.mediaUrl}
                                     header={employee.name}

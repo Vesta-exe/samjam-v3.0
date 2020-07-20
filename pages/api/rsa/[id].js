@@ -1,5 +1,5 @@
 import connectDb from '../../../utils/connectDb'
-import Employee from '../../../models/Employee'
+import Rsa from '../../../models/Rsa'
 
 
 connectDb()
@@ -13,36 +13,36 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const employee = await Employee.findById(id)
+                const rsa = await Rsa.findById(id)
 
-                if (!employee) {
+                if (!rsa) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: employee})
+                res.status(200).json({success: true, data: rsa})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'PUT':
             try {
-                const employee = await Employee.findByIdAndUpdate(id, req.body, {
+                const rsa = await Rsa.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true
                 })
 
-                if (!employee) {
+                if (!rsa) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: employee})
+                res.status(200).json({success: true, data: rsa})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'DELETE':
             try {
-                const deleteEmployee = await Employee.deleteOne({_id: id})
+                const deleteRsa = await Rsa.deleteOne({_id: id})
 
-                if (!deleteEmployee) {
+                if (!deleteRsa) {
                     return res.status(400).json({succes: false})
                 }
                 res.status(200).json({success: true, data: {}})

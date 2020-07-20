@@ -1,5 +1,5 @@
 import connectDb from '../../../utils/connectDb'
-import Employee from '../../../models/Employee'
+import Firewarden from '../../../models/Firewarden'
 
 
 connectDb()
@@ -13,36 +13,36 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const employee = await Employee.findById(id)
+                const firewarden = await Firewarden.findById(id)
 
-                if (!employee) {
+                if (!firewarden) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: employee})
+                res.status(200).json({success: true, data: firewarden})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'PUT':
             try {
-                const employee = await Employee.findByIdAndUpdate(id, req.body, {
+                const firewarden = await Firewarden.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true
                 })
 
-                if (!employee) {
+                if (!firewarden) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: employee})
+                res.status(200).json({success: true, data: firewarden})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'DELETE':
             try {
-                const deleteEmployee = await Employee.deleteOne({_id: id})
+                const deleteFirewarden = await Firewarden.deleteOne({_id: id})
 
-                if (!deleteEmployee) {
+                if (!deleteFirewarden) {
                     return res.status(400).json({succes: false})
                 }
                 res.status(200).json({success: true, data: {}})

@@ -1,11 +1,9 @@
 import fetch from 'isomorphic-unfetch'
 import EmployeeSummary from '../../components/Employee/EmployeeSummary'
-//import EmployeeUpdate from '../../components/Employee/EmployeeUpdate'
 //import EmployeeRegister from '../../components/Employee/EmployeeRegister'
 //import EmployeeTraining from '../../components/Employee/EmployeeTraining'
 import baseUrl from '../../utils/baseUrl'
 
-//TODO: Add Update Page
 //TODO: Add Performance Segment
 //TODO: Add Training Segment
 

@@ -1,14 +1,14 @@
 import React from 'react'
-import {Form, Input, Button, Header, Icon, Loader} from 'semantic-ui-react'
-import baseUrl from '../../../utils/baseUrl'
+import {Form, Input, Button, Image, Header, Icon, Select, Loader} from 'semantic-ui-react'
+import baseUrl from '../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
-import Link from 'next/link'
 import {useRouter} from 'next/router'
 
-function EditUser({user}) {
+function NewUser() {
     const [form, setForm] = React.useState({
-        name: user.name,
-        email: user.email,
+        name: '',
+        email: '',
+        password: ''
     })
     const [isSubmitting, setIsSubmiting] = React.useState(false)
     const [errors, setErrors] = React.useState({})
@@ -17,7 +17,7 @@ function EditUser({user}) {
     React.useEffect(() => {
         if(isSubmitting) {
             if (Object.keys(errors).length === 0) {
-                updateEmployee()
+                createEmployee()
             }
             else {
                 setIsSubmiting(false)
@@ -25,17 +25,17 @@ function EditUser({user}) {
         }  
     })
 
-    const updateEmployee = async () => {
+    const createEmployee = async () => {
         try {
-            const res = await fetch(`${baseUrl}/api/users/${router.query.id}`, {
-                method: 'PUT',
+            const res = await fetch(`${baseUrl}/api/users`, {
+                method: 'POST',
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(form)
             })
-            router.push(`/user/${user._id}`)
+            router.push("/users")
         } catch (error) {
             console.log(error)
         }
@@ -65,14 +65,17 @@ function EditUser({user}) {
         if (!form.email) {
             err.email = 'Email is required'
         }
+        if (!form.password) {
+            err.password = 'Password is required'
+        }
         return err
     }
 
     return (
         <>
             <Header as="h2" block>
-                <Icon name="edit" color="orange"/>
-                Edit User {user.name}
+                <Icon name="add" color="green"/>
+                Add New User
             </Header>
             {
                 isSubmitting
@@ -86,7 +89,6 @@ function EditUser({user}) {
                             name="name"
                             label="Name"
                             placeholder= "Name"
-                            value={form.name}
                             onChange={handleChange}
                         />
                         <Form.Field
@@ -97,21 +99,24 @@ function EditUser({user}) {
                             label="Email"
                             placeholder= "Eamil"
                             type="email"
-                            value={form.email}
                             onChange={handleChange}
                         />
-                        <Link href={`/user/${user._id}`}>
-                            <Button color="red" icon labelPosition="left" floated="right">
-                                <Icon name="cancel"/>
-                                Cancel
-                            </Button>
-                        </Link>
+                        <Form.Field
+                            control={Input}
+                            fluid
+                            error={errors.password ? {content: 'Please enter a password', pointing: 'below'} : null}
+                            name="password"
+                            label="Password"
+                            placeholder= "Password"
+                            type="password"
+                            onChange={handleChange}
+                        />
                         <Form.Field
                             floated="right"
                             control={Button}
                             color="green"
-                            icon="edit"
-                            content="Update"
+                            icon="pencil alternate"
+                            content="Submit"
                             type="submit"
                         />
                     </Form>
@@ -120,11 +125,4 @@ function EditUser({user}) {
     )
 }
 
-EditUser.getInitialProps = async ({query: {id}}) => {
-    const res = await fetch(`${baseUrl}/api/users/${id}`)
-    const {data} = await res.json()
-
-    return {user: data}
-}
-
-export default EditUser
+export default NewUser

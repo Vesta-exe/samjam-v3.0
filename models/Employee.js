@@ -121,6 +121,46 @@ const EmployeeSchema = new mongoose.Schema ({
     MOD: {
         type: String,
         default: 'No',
+    },
+    rsa: {
+        type: String,
+        default: ''
+    },
+    rsaExpiry: {
+        type: String,
+        default: ''
+    },
+    firstaid: {
+        type: String,
+        default: ''
+    },
+    firstaidExpiry: {
+        type: String,
+        default: ''
+    },
+    firewarden: {
+        type: String,
+        default: ''
+    },
+    firewardenExpiry: {
+        type: String,
+        default: ''
+    },
+    foodsaftey: {
+        type: String,
+        default: ''
+    },
+    foodsafteyExpiry: {
+        type: String,
+        default: ''
+    },
+    wwcc: {
+        type: String,
+        default: ''
+    },
+    wwccExpiry: {
+        type: String,
+        default: ''
     }
 }, { timestamps: true
 })

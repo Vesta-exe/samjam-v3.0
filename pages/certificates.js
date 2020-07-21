@@ -8,7 +8,7 @@ function Certificates() {
             <Link href="/certificates/rsa">
                 <Button 
                     fluid
-                    textAlign="center"
+                    textalign="center"
                     size="massive"
                     color="blue"
                 >
@@ -20,7 +20,7 @@ function Certificates() {
             <Link href="/certificates/firstaid">
                 <Button 
                     fluid
-                    textAlign="center"
+                    textalign="center"
                     size="massive"
                     color="green"
                 >
@@ -32,7 +32,7 @@ function Certificates() {
             <Link href="/certificates/firewarden">
                 <Button 
                     fluid
-                    textAlign="center"
+                    textalign="center"
                     size="massive"
                     color="red"
                 >
@@ -44,7 +44,7 @@ function Certificates() {
             <Link href="/certificates/foodsaftey">
                 <Button 
                     fluid
-                    textAlign="center"
+                    textalign="center"
                     size="massive"
                     color="yellow"
                 >
@@ -56,7 +56,7 @@ function Certificates() {
             <Link href="/certificates/wwcc">
                 <Button
                     fluid 
-                    textAlign="center"
+                    textalign="center"
                     size="massive"
                     color="teal"
                 >

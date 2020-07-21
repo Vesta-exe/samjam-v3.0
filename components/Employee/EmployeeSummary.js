@@ -1,6 +1,4 @@
-import {Item, Label, Button, Icon} from 'semantic-ui-react'
-import baseUrl from '../../utils/baseUrl'
-import Link from 'next/link'
+import {Item, Label} from 'semantic-ui-react'
 
 function EmployeeSummary({ employee}) {
     const isCB = employee.CB === 'Yes'
@@ -106,12 +104,6 @@ function EmployeeSummary({ employee}) {
                     </Item.Description>
                 </Item.Content>
             </Item>
-                <Link href={`/employee/${employee._id}/edit`}>
-                    <Button icon color="blue">
-                        <Icon name="edit"/>
-                        Edit
-                    </Button>
-                </Link>
         </Item.Group>
     )
 }

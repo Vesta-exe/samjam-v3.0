@@ -1,0 +1,129 @@
+import React from 'react'
+import Link from 'next/link'
+import {Form, Input, Button, Header, Icon, Loader} from 'semantic-ui-react'
+import baseUrl from '../../../utils/baseUrl'
+import fetch from 'isomorphic-unfetch'
+import {useRouter} from 'next/router'
+
+function Wwcc({employee}) {
+    const [form, setForm] = React.useState({
+        rsa: employee.wwcc,
+        rsaExpiry: employee.wwccExpiry
+    })
+    const [isSubmitting, setIsSubmiting] = React.useState(false)
+    const [errors, setErrors] = React.useState({})
+    const router = useRouter()
+
+    React.useEffect(() => {
+        if(isSubmitting) {
+            if (Object.keys(errors).length === 0) {
+                updateWwcc()
+            }
+            else {
+                setIsSubmiting(false)
+            }
+        }  
+    })
+
+    const updateWwcc = async () => {
+        try {
+            const res = await fetch(`${baseUrl}/api/employees/${router.query.id}`, {
+                method: 'PUT',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(form)
+            })
+            router.push(`/employee/${employee._id}`)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        let errs = validate()
+        setErrors(errs)
+        setIsSubmiting(true)
+    }
+
+    const validate = () => {
+        let err = {}
+
+        if (!form.wwcc) {
+            err.wwcc = 'WWCC# is required'
+        }
+        if (!form.wwccExpiry) {
+            err.wwccExpiry = 'Expiry is required'
+        }
+        return err
+    }
+
+    return (
+        <>
+            <Header as="h2" block>
+                <Icon.Group size="large">
+                    <Icon name="child" color="teal"/>
+                    <Icon name="add" color="green" corner="bottom right"/>
+                </Icon.Group>
+                Add WWCC for {employee.name}
+            </Header>
+            {
+                isSubmitting
+                    ? <Loader active inline ='centered'/>
+                    : <Form onSubmit={handleSubmit}>
+                        <h3 className="form-required">All fields are required</h3>
+                        <Form.Field
+                            control={Input}
+                            error={errors.wwcc ? {content: 'Please enter a WWCC#', pointing: 'below'} : null}
+                            name="wwcc"
+                            label="WWCC#"
+                            placeholder= "WWCC#"
+                            value={form.wwcc}
+                            onChange={handleChange}
+                        />
+                        <Form.Field
+                            control={Input}
+                            error={errors.wwccExpiry ? {content: 'Please enter a Expiry', pointing: 'below'} : null}
+                            name="wwccExpiry"
+                            label="WWCC Expiry"
+                            placeholder="DD/MM/YYYY"
+                            value={form.wwccExpiry}
+                            onChange={handleChange}
+                        />
+                        <Link href={`/employee/${employee._id}`}>
+                            <Button color="red" icon labelPosition="left" floated="right">
+                                <Icon name="cancel"/>
+                                Cancel
+                            </Button>
+                        </Link>
+                        <Form.Field
+                            floated="right"
+                            control={Button}
+                            color="green"
+                            icon="pencil alternate"
+                            content="Submit"
+                            type="submit"
+                        />
+                    </Form>
+                }
+            </>
+        )
+}
+
+Wwcc.getInitialProps = async ({query: {id}}) => {
+    const res = await fetch(`${baseUrl}/api/employees/${id}`)
+    const {data} = await res.json()
+
+    return {employee: data}
+}
+
+export default Wwcc

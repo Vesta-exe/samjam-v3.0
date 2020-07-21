@@ -59,7 +59,6 @@ function NewEmployee() {
         INT: '',
         VJR: ''
     })
-    const [mediaPreview, setMediaPreview] = React.useState('')
     const [isSubmitting, setIsSubmiting] = React.useState(false)
     const [errors, setErrors] = React.useState({})
     const router = useRouter()
@@ -167,7 +166,7 @@ function NewEmployee() {
     return (
         <>
             <Header as="h2" block>
-                <Icon name="add" color="green"/>
+                <Icon name="user add" color="green"/>
                 Add New Employee
             </Header>
             {
@@ -361,11 +360,9 @@ function NewEmployee() {
                                 onChange={handleSelectChange}
                             />
                         </Form.Group>
-                        <Image src={mediaPreview} rounded centered size ="large"/>
                         <Form.Field
                             floated="right"
                             control={Button}
-                            //disabled={loading}
                             color="green"
                             icon="pencil alternate"
                             content="Submit"

@@ -6,6 +6,8 @@ import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
 function Wwcc({employee}) {
+    const isWwcc = employee.wwcc === ''
+
     const [form, setForm] = React.useState({
         rsa: employee.wwcc,
         rsaExpiry: employee.wwccExpiry
@@ -69,13 +71,22 @@ function Wwcc({employee}) {
 
     return (
         <>
-            <Header as="h2" block>
-                <Icon.Group size="large">
-                    <Icon name="child" color="teal"/>
-                    <Icon name="add" color="green" corner="bottom right"/>
-                </Icon.Group>
-                Add WWCC for {employee.name}
-            </Header>
+            {!isWwcc
+                ? <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="child" color="teal"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Edit WWCC for {employee.name}
+                </Header>
+                : <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="child" color="teal"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Add WWCC for {employee.name}
+                </Header>
+            }
             {
                 isSubmitting
                     ? <Loader active inline ='centered'/>
@@ -96,6 +107,7 @@ function Wwcc({employee}) {
                             name="wwccExpiry"
                             label="WWCC Expiry"
                             placeholder="DD/MM/YYYY"
+                            type="date"
                             value={form.wwccExpiry}
                             onChange={handleChange}
                         />
@@ -105,6 +117,8 @@ function Wwcc({employee}) {
                                 Cancel
                             </Button>
                         </Link>
+                        <br/>
+                        <br/>
                         <Form.Field
                             floated="right"
                             control={Button}

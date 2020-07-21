@@ -6,6 +6,8 @@ import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
 function Firstaid({employee}) {
+    const isFirstaid = employee.firstaid === ''
+
     const [form, setForm] = React.useState({
         rsa: employee.firstaid,
         rsaExpiry: employee.firstaidExpiry
@@ -69,13 +71,22 @@ function Firstaid({employee}) {
 
     return (
         <>
-            <Header as="h2" block>
-                <Icon.Group size="large">
-                    <Icon name="medkit" color="green"/>
-                    <Icon name="add" color="green" corner="bottom right"/>
-                </Icon.Group>
-                Add First Aid for {employee.name}
-            </Header>
+            {!isFirstaid
+                ? <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="medkit" color="green"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Edit First Aid for {employee.name}
+                </Header>
+                : <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="medkit" color="green"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Add First Aid for {employee.name}
+                </Header>
+            }
             {
                 isSubmitting
                     ? <Loader active inline ='centered'/>
@@ -96,6 +107,7 @@ function Firstaid({employee}) {
                             name="firstaidExpiry"
                             label="First Aid Expiry"
                             placeholder="DD/MM/YYYY"
+                            type="date"
                             value={form.firstaidExpiry}
                             onChange={handleChange}
                         />
@@ -105,6 +117,8 @@ function Firstaid({employee}) {
                                 Cancel
                             </Button>
                         </Link>
+                        <br/>
+                        <br/>
                         <Form.Field
                             floated="right"
                             control={Button}

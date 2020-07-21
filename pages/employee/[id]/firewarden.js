@@ -6,6 +6,8 @@ import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
 function Firewarden({employee}) {
+    const isFirewarden = employee.firewarden === ''
+
     const [form, setForm] = React.useState({
         rsa: employee.firewarden,
         rsaExpiry: employee.firewardenExpiry
@@ -69,13 +71,22 @@ function Firewarden({employee}) {
 
     return (
         <>
-            <Header as="h2" block>
-                <Icon.Group size="large">
-                    <Icon name="fire extinguisher" color="red"/>
-                    <Icon name="add" color="green" corner="bottom right"/>
-                </Icon.Group>
-                Add Fire Warden for {employee.name}
-            </Header>
+            {!isFirewarden
+                ? <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="fire extinguisher" color="red"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Edit Fire Warden for {employee.name}
+                </Header>
+                : <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="fire extinguisher" color="red"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Add Fire Warden for {employee.name}
+                </Header>
+            }
             {
                 isSubmitting
                     ? <Loader active inline ='centered'/>
@@ -96,6 +107,7 @@ function Firewarden({employee}) {
                             name="firewardenExpiry"
                             label="Fire Warden Expiry"
                             placeholder="DD/MM/YYYY"
+                            type="date"
                             value={form.firewardenExpiry}
                             onChange={handleChange}
                         />
@@ -105,6 +117,8 @@ function Firewarden({employee}) {
                                 Cancel
                             </Button>
                         </Link>
+                        <br/>
+                        <br/>
                         <Form.Field
                             floated="right"
                             control={Button}

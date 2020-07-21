@@ -1,4 +1,4 @@
-import {Table, Image, Header, Icon} from 'semantic-ui-react'
+import {Table, Header, Icon} from 'semantic-ui-react'
 import baseUrl from '../utils/baseUrl'
 
 function Contacts({employees}) {
@@ -98,7 +98,6 @@ function Contacts({employees}) {
 Contacts.getInitialProps = async () => {
     const res = await fetch(`${baseUrl}/api/employees`)
     const {data} = await res.json()
-    console.log(data)
 
     return {employees: data}
 }

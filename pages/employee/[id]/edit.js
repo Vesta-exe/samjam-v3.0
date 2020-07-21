@@ -201,6 +201,7 @@ function EditEmployee({employee}) {
                                 name="dob"
                                 label="D.O.B"
                                 placeholder="DD/MM/YYYY"
+                                type="date"
                                 value={form.dob}
                                 onChange={handleChange}
                             />
@@ -289,6 +290,7 @@ function EditEmployee({employee}) {
                                 name="startDate"
                                 label="Start Date"
                                 placeholder= "DD/MM/YYYY"
+                                type="date"
                                 value={form.startDate}
                                 onChange={handleChange}
                             />

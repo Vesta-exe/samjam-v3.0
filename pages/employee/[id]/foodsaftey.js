@@ -6,6 +6,8 @@ import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
 function Foodsaftey({employee}) {
+    const isFoodsaftey = employee.foodsaftey === ''
+
     const [form, setForm] = React.useState({
         rsa: employee.foodsaftey,
         rsaExpiry: employee.foodsafteyExpiry
@@ -69,13 +71,22 @@ function Foodsaftey({employee}) {
 
     return (
         <>
-            <Header as="h2" block>
-                <Icon.Group size="large">
-                    <Icon name="utensils" color="yellow"/>
-                    <Icon name="add" color="green" corner="bottom right"/>
-                </Icon.Group>
-                Add Food Saftey for {employee.name}
-            </Header>
+            {!isFoodsaftey
+                ? <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="utensils" color="yellow"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Edit Food Saftey for {employee.name}
+                </Header>
+                : <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="utensils" color="yellow"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                        Add Food Saftey for {employee.name}
+                </Header>
+            }
             {
                 isSubmitting
                     ? <Loader active inline ='centered'/>
@@ -96,6 +107,7 @@ function Foodsaftey({employee}) {
                             name="foodsafteyExpiry"
                             label="Food Saftey Expiry"
                             placeholder="DD/MM/YYYY"
+                            type="date"
                             value={form.foodsafteyExpiry}
                             onChange={handleChange}
                         />
@@ -105,6 +117,8 @@ function Foodsaftey({employee}) {
                                 Cancel
                             </Button>
                         </Link>
+                        <br/>
+                        <br/>
                         <Form.Field
                             floated="right"
                             control={Button}

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const {String, Boolean} = mongoose.Schema.Types
+const {String, Date} = mongoose.Schema.Types
 
 const EmployeeSchema = new mongoose.Schema ({
     name: {
@@ -12,11 +12,11 @@ const EmployeeSchema = new mongoose.Schema ({
         default: 'https://res.cloudinary.com/aurix/image/upload/c_scale,w_900/v1594294786/blank-profile-picture-973460_1280_hytsdd.png'
     },
     dob: {
-        type: String,
+        type: Date,
         required: true
     },
     startDate: {
-        type: String,
+        type: Date,
         required: true
     },
     employment: {
@@ -127,40 +127,40 @@ const EmployeeSchema = new mongoose.Schema ({
         default: ''
     },
     rsaExpiry: {
-        type: String,
-        default: ''
+        type: Date,
+        default: null
     },
     firstaid: {
         type: String,
         default: ''
     },
     firstaidExpiry: {
-        type: String,
-        default: ''
+        type: Date,
+        default: null
     },
     firewarden: {
         type: String,
         default: ''
     },
     firewardenExpiry: {
-        type: String,
-        default: ''
+        type: Date,
+        default: null
     },
     foodsaftey: {
         type: String,
         default: ''
     },
     foodsafteyExpiry: {
-        type: String,
-        default: ''
+        type: Date,
+        default: null
     },
     wwcc: {
         type: String,
         default: ''
     },
     wwccExpiry: {
-        type: String,
-        default: ''
+        type: Date,
+        default: null
     }
 }, { timestamps: true
 })

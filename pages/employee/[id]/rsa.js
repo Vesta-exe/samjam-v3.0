@@ -6,6 +6,8 @@ import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
 function Rsa({employee}) {
+    const isRsa = employee.rsa === ''
+
     const [form, setForm] = React.useState({
         rsa: employee.rsa,
         rsaExpiry: employee.rsaExpiry
@@ -69,13 +71,22 @@ function Rsa({employee}) {
 
     return (
         <>
-            <Header as="h2" block>
-                <Icon.Group size="large">
-                    <Icon name="martini glass" color="blue"/>
-                    <Icon name="add" color="green" corner="bottom right"/>
-                </Icon.Group>
-                Add RSA for {employee.name}
-            </Header>
+            {!isRsa
+                ? <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="martini glass" color="blue"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                    Edit RSA for {employee.name}
+                </Header>
+                : <Header as="h2" block>
+                    <Icon.Group size="large">
+                        <Icon name="martini glass" color="blue"/>
+                        <Icon name="add" color="green" corner="bottom right"/>
+                    </Icon.Group>
+                    Add RSA for {employee.name}
+                </Header>
+            }
             {
                 isSubmitting
                     ? <Loader active inline ='centered'/>
@@ -96,6 +107,7 @@ function Rsa({employee}) {
                             name="rsaExpiry"
                             label="RSA Expiry"
                             placeholder="DD/MM/YYYY"
+                            type="date"
                             value={form.rsaExpiry}
                             onChange={handleChange}
                         />
@@ -105,6 +117,8 @@ function Rsa({employee}) {
                                 Cancel
                             </Button>
                         </Link>
+                        <br/>
+                        <br/>
                         <Form.Field
                             floated="right"
                             control={Button}

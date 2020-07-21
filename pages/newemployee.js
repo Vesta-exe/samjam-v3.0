@@ -189,6 +189,7 @@ function NewEmployee() {
                                 error={errors.dob ? {content: 'Please enter a D.O.B.', pointing: 'below'} : null}
                                 name="dob"
                                 label="D.O.B"
+                                type="date"
                                 placeholder="DD/MM/YYYY"
                                 onChange={handleChange}
                             />
@@ -268,6 +269,7 @@ function NewEmployee() {
                                 error={errors.startDate ? {content: 'Please enter a start date', pointing: 'below'} : null}
                                 name="startDate"
                                 label="Start Date"
+                                type="date"
                                 placeholder= "DD/MM/YYYY"
                                 onChange={handleChange}
                             />

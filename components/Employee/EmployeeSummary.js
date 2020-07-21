@@ -1,4 +1,5 @@
 import {Item, Label} from 'semantic-ui-react'
+import formatDate from '../../utils/formatDate'
 
 function EmployeeSummary({ employee}) {
     const isCB = employee.CB === 'Yes'
@@ -94,8 +95,8 @@ function EmployeeSummary({ employee}) {
                         <Label size="huge" color="teal"> POS: {employee.pos} </Label>
                         <br/>
                         <br/>
-                        <p><strong>D.O.B:</strong> {employee.dob} </p>
-                        <p><strong>Start Date:</strong> {employee.startDate} </p>
+                        <p><strong>D.O.B:</strong> {formatDate(employee.dob)} </p>
+                        <p><strong>Start Date:</strong> {formatDate(employee.startDate)} </p>
                         <p><strong>Email:</strong> {employee.email} </p>
                         <p><strong>Phone:</strong> {employee.phone} </p>
                         <p><strong>Emergency Contact:</strong> {employee.emergencyContact} </p>

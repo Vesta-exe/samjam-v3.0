@@ -10,7 +10,7 @@ export default async (req, res) => {
         case 'GET':
             try {
                 const performances = await Performance.find({}).sort({date: -1})
-                res.status(200).json({success: true, data: performances})
+                res.status(200).json({success: true, performanceData: performances})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -18,7 +18,7 @@ export default async (req, res) => {
         case 'POST':
             try {
                 const performance = await Performance.create(req.body)
-                res.status(201).json({success: true, data: performance})
+                res.status(201).json({success: true, performanceData: performance})
             } catch (error) {
                 res.status(400).json({success: false, error})
             }

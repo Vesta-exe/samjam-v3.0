@@ -12,7 +12,7 @@ export default async (req, res) => {
         case 'GET':
             try {
                 const users = await User.find({}).sort({name: 'asc'})
-                res.status(200).json({success: true, data: users})
+                res.status(200).json({success: true, userData: users})
             } catch (error) {
                 res.status(400).json({success: false})
             }

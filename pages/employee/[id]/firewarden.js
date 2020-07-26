@@ -134,10 +134,10 @@ function Firewarden({employee}) {
 }
 
 Firewarden.getInitialProps = async ({query: {id}}) => {
-    const res = await fetch(`${baseUrl}/api/employees/${id}`)
-    const {data} = await res.json()
+    const employee = await fetch(`${baseUrl}/api/employees/${id}`)
+    const {employeeData} = await employee.json()
 
-    return {employee: data}
+    return {employee: employeeData}
 }
 
 export default Firewarden

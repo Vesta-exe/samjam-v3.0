@@ -124,13 +124,13 @@ function Header({user}) {
                     </Menu.Item>
                 </Link>
 
-                <Link href="/users">
-                    <Menu.Item header active={isActive("/users")}>
+                <Link href="/admin">
+                    <Menu.Item header active={isActive("/admin")}>
                         <Icon
-                            name="user"
+                            name="cogs"
                             size="large"
                         />
-                        Users
+                        Admin
                     </Menu.Item>
                 </Link>
 

@@ -1,5 +1,5 @@
 import connectDb from '../../../utils/connectDb'
-import Performance from '../../../models/Performance'
+import Cashhandling from '../../../models/Cashhandling'
 
 
 connectDb()
@@ -13,39 +13,39 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const performance = await Performance.findById(id)
+                const cashhandling = await Cashhandling.findById(id)
 
-                if (!performance) {
+                if (!cashhandling) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, performanceData: performance})
+                res.status(200).json({success: true, cashhandlingData: cashhandling})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'PUT':
             try {
-                const performance = await Performance.findByIdAndUpdate(id, req.body, {
+                const cashhandling = await Cashhandling.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true
                 })
 
-                if (!performance) {
+                if (!employee) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, performanceData: performance})
+                res.status(200).json({success: true, cashhandlingData: cashhandling})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'DELETE':
             try {
-                const deletePerformance = await Performance.deleteOne({_id: id})
+                const deleteCashhandling = await Cashhandling.deleteOne({_id: id})
 
-                if (!deletePerformance) {
+                if (!deleteCashhandling) {
                     return res.status(400).json({succes: false})
                 }
-                res.status(200).json({success: true, performanceData: {}})
+                res.status(200).json({success: true, cashhandlingData: {}})
             } catch (error) {
                 res.status(400).json({success: false})
             }

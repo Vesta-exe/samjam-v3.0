@@ -10,7 +10,7 @@ export default async (req, res) => {
         case 'GET':
             try {
                 const rsas = await Rsa.find({}).sort({name: 'asc'})
-                res.status(200).json({success: true, data: rsas})
+                res.status(200).json({success: true, rsaData: rsas})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -18,7 +18,7 @@ export default async (req, res) => {
         case 'POST':
             try {
                 const rsa = await Rsa.create(req.body)
-                res.status(201).json({success: true, data: rsa})
+                res.status(201).json({success: true, rsaData: rsa})
             } catch (error) {
                 res.status(400).json({success: false, error})
             }

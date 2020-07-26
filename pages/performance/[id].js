@@ -79,9 +79,9 @@ function PerformanceNote({performance}) {
 }
 
 PerformanceNote.getInitialProps = async ({query: {id}}) => {
-    const res = await fetch(`${baseUrl}/api/performance/${id}`)
-    const {data} = await res.json()
-    return {performance: data}
+    const performance = await fetch(`${baseUrl}/api/performance/${id}`)
+    const {perfromanceData} = await performance.json()
+    return {performance: perfromanceData}
 }
 
 export default PerformanceNote

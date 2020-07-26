@@ -121,10 +121,10 @@ function EditUser({user}) {
 }
 
 EditUser.getInitialProps = async ({query: {id}}) => {
-    const res = await fetch(`${baseUrl}/api/users/${id}`)
-    const {data} = await res.json()
+    const user = await fetch(`${baseUrl}/api/users/${id}`)
+    const {userData} = await user.json()
 
-    return {user: data}
+    return {user: userData}
 }
 
 export default EditUser

@@ -1,5 +1,5 @@
 import connectDb from '../../../utils/connectDb'
-import Performance from '../../../models/Performance'
+import Positive from '../../../models/Positive'
 
 
 connectDb()
@@ -13,39 +13,39 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const performance = await Performance.findById(id)
+                const positive = await Positive.findById(id)
 
-                if (!performance) {
+                if (!positive) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, performanceData: performance})
+                res.status(200).json({success: true, positiveData: positive})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'PUT':
             try {
-                const performance = await Performance.findByIdAndUpdate(id, req.body, {
+                const positive = await Positive.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true
                 })
 
-                if (!performance) {
+                if (!positive) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, performanceData: performance})
+                res.status(200).json({success: true, positiveData: positives})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'DELETE':
             try {
-                const deletePerformance = await Performance.deleteOne({_id: id})
+                const deletePositive = await Positive.deleteOne({_id: id})
 
-                if (!deletePerformance) {
+                if (!deletePositive) {
                     return res.status(400).json({succes: false})
                 }
-                res.status(200).json({success: true, performanceData: {}})
+                res.status(200).json({success: true, positiveData: {}})
             } catch (error) {
                 res.status(400).json({success: false})
             }

@@ -12,10 +12,10 @@ function Employees({employees}) {
 }
 
 Employees.getInitialProps = async () => {
-    const res = await fetch(`${baseUrl}/api/employees`)
-    const {data} = await res.json()
+    const employees = await fetch(`${baseUrl}/api/employees`)
+    const {employeeData} = await employees.json()
 
-    return {employees: data}
+    return {employees: employeeData}
 }
 
 export default Employees

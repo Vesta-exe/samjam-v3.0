@@ -10,7 +10,7 @@ export default async (req, res) => {
         case 'GET':
             try {
                 const foodsafteys = await Foodsaftey.find({}).sort({name: 'asc'})
-                res.status(200).json({success: true, data: foodsafteys})
+                res.status(200).json({success: true, foodsafteyData: foodsafteys})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -18,7 +18,7 @@ export default async (req, res) => {
         case 'POST':
             try {
                 const foodsaftey = await Foodsaftey.create(req.body)
-                res.status(201).json({success: true, data: foodsaftey})
+                res.status(201).json({success: true, foodsafteyData: foodsaftey})
             } catch (error) {
                 res.status(400).json({success: false, error})
             }

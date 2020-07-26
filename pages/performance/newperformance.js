@@ -157,6 +157,16 @@ function NewPerformance({employees}) {
         return err
     }
 
+    const loadOptions = employees.map((employee) => {
+        return (
+            {
+                key: employee.name,
+                value: employee.ObjectId, 
+                text: employee.name,
+            }
+        )
+    })
+
     return (
         <>
             <Header as="h2" block>
@@ -182,7 +192,7 @@ function NewPerformance({employees}) {
                                 name="employee"
                                 label="Employee"
                                 placeholder="Employee"
-                                options={}
+                                options={loadOptions}
                                 onChange={handleChange}
                             />
                             <Form.Field
@@ -274,10 +284,10 @@ function NewPerformance({employees}) {
 }
 
 NewPerformance.getInitialProps = async () => {
-    const res = await fetch(`${baseUrl}/api/employees`)
-    const {data} = await res.json()
+    const performance = await fetch(`${baseUrl}/api/employees`)
+    const {performanceData} = await performance.json()
 
-    return {employees: data}
+    return {employees: performanceData}
 }
 
 export default NewPerformance

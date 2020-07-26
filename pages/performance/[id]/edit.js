@@ -300,10 +300,10 @@ function EditPerformance({performance}) {
 }
 
 EditPerformance.getInitialProps = async ({query: {id}}) => {
-    const res = await fetch(`${baseUrl}/api/performance/${id}`)
-    const {data} = await res.json()
+    const performance = await fetch(`${baseUrl}/api/performance/${id}`)
+    const {performanceData} = await performance.json()
 
-    return {performance: data}
+    return {performance: performanceData}
 }
 
 export default EditPerformance

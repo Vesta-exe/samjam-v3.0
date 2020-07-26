@@ -1,4 +1,4 @@
-import Employee from '../../../models/Employee'
+import Sick from '../../../models/Sick'
 import connectDb from '../../../utils/connectDb'
 
 connectDb()
@@ -9,16 +9,16 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const employees = await Employee.find({}).sort({name: 'asc'})
-                res.status(200).json({success: true, employeeData: employees})
+                const sicks = await Sick.find({}).sort({name: 'asc'})
+                res.status(200).json({success: true, sickData: sicks})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'POST':
             try {
-                const employee = await Employee.create(req.body)
-                res.status(201).json({success: true, employeeData: employee})
+                const sick = await Sick.create(req.body)
+                res.status(201).json({success: true, sickData: sick})
             } catch (error) {
                 res.status(400).json({success: false, error})
             }

@@ -66,10 +66,10 @@ function Performance({performances}) {
 }
 
 Performance.getInitialProps = async () => {
-    const res = await fetch(`${baseUrl}/api/performance`)
-    const {data} = await res.json()
+    const performance = await fetch(`${baseUrl}/api/performance`)
+    const {performanceData} = await performance.json()
 
-    return {performances: data}
+    return {performances: performanceData}
 }
 
 export default Performance

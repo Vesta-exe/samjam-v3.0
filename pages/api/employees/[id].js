@@ -18,7 +18,7 @@ export default async (req, res) => {
                 if (!employee) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: employee})
+                res.status(200).json({success: true, employeeData: employee})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -33,7 +33,7 @@ export default async (req, res) => {
                 if (!employee) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: employee})
+                res.status(200).json({success: true, employeeData: employee})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -45,7 +45,7 @@ export default async (req, res) => {
                 if (!deleteEmployee) {
                     return res.status(400).json({succes: false})
                 }
-                res.status(200).json({success: true, data: {}})
+                res.status(200).json({success: true, employeeData: {}})
             } catch (error) {
                 res.status(400).json({success: false})
             }

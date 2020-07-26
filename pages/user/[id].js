@@ -31,10 +31,9 @@ function User({user}) {
 }
 
 User.getInitialProps = async ({query: {id}}) => {
-    const res = await fetch(`${baseUrl}/api/users/${id}`)
-    const {data} = await res.json()
-    console.log(data)
-    return {user: data}
+    const user = await fetch(`${baseUrl}/api/users/${id}`)
+    const {userData} = await user.json()
+    return {user: userData}
 }
 
 export default User

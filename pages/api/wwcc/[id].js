@@ -18,7 +18,7 @@ export default async (req, res) => {
                 if (!wwcc) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: wwcc})
+                res.status(200).json({success: true, wwccData: wwcc})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -33,7 +33,7 @@ export default async (req, res) => {
                 if (!wwcc) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: wwcc})
+                res.status(200).json({success: true, wwccData: wwcc})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -45,7 +45,7 @@ export default async (req, res) => {
                 if (!deleteWwcc) {
                     return res.status(400).json({succes: false})
                 }
-                res.status(200).json({success: true, data: {}})
+                res.status(200).json({success: true, wwccData: {}})
             } catch (error) {
                 res.status(400).json({success: false})
             }

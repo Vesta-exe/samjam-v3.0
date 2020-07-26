@@ -18,7 +18,7 @@ export default async (req, res) => {
                 if (!foodsaftey) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: foodsaftey})
+                res.status(200).json({success: true, foodsafteyData: foodsaftey})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -33,7 +33,7 @@ export default async (req, res) => {
                 if (!foodsaftey) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: foodsaftey})
+                res.status(200).json({success: true, foodsafteyData: foodsaftey})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -45,7 +45,7 @@ export default async (req, res) => {
                 if (!deleteFoodsaftey) {
                     return res.status(400).json({succes: false})
                 }
-                res.status(200).json({success: true, data: {}})
+                res.status(200).json({success: true, foodsafteyData: {}})
             } catch (error) {
                 res.status(400).json({success: false})
             }

@@ -1,5 +1,5 @@
 import connectDb from '../../../utils/connectDb'
-import Performance from '../../../models/Performance'
+import Sick from '../../../models/Sick'
 
 
 connectDb()
@@ -13,39 +13,39 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const performance = await Performance.findById(id)
+                const sick = await Sick.findById(id)
 
-                if (!performance) {
+                if (!sick) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, performanceData: performance})
+                res.status(200).json({success: true, sickData: sick})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'PUT':
             try {
-                const performance = await Performance.findByIdAndUpdate(id, req.body, {
+                const sick = await Sick.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true
                 })
 
-                if (!performance) {
+                if (!sick) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, performanceData: performance})
+                res.status(200).json({success: true, sickData: sick})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
         case 'DELETE':
             try {
-                const deletePerformance = await Performance.deleteOne({_id: id})
+                const deleteSick = await Sick.deleteOne({_id: id})
 
-                if (!deletePerformance) {
+                if (!deleteSick) {
                     return res.status(400).json({succes: false})
                 }
-                res.status(200).json({success: true, performanceData: {}})
+                res.status(200).json({success: true, sickData: {}})
             } catch (error) {
                 res.status(400).json({success: false})
             }

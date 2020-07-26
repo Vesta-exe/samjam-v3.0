@@ -4,11 +4,9 @@ import baseUrl from '../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 
-function NewUser() {
+function NewPositive() {
     const [form, setForm] = React.useState({
-        name: '',
-        email: '',
-        password: ''
+        name: ''
     })
     const [isSubmitting, setIsSubmiting] = React.useState(false)
     const [errors, setErrors] = React.useState({})
@@ -17,7 +15,7 @@ function NewUser() {
     React.useEffect(() => {
         if(isSubmitting) {
             if (Object.keys(errors).length === 0) {
-                createEmployee()
+                createPositive()
             }
             else {
                 setIsSubmiting(false)
@@ -25,9 +23,9 @@ function NewUser() {
         }  
     })
 
-    const createEmployee = async () => {
+    const createPositive = async () => {
         try {
-            const res = await fetch(`${baseUrl}/api/users`, {
+            const res = await fetch(`${baseUrl}/api/positive`, {
                 method: 'POST',
                 headers: {
                     "Accept": "application/json",
@@ -62,12 +60,6 @@ function NewUser() {
         if (!form.name) {
             err.name = 'Name is required'
         }
-        if (!form.email) {
-            err.email = 'Email is required'
-        }
-        if (!form.password) {
-            err.password = 'Password is required'
-        }
         return err
     }
 
@@ -85,30 +77,10 @@ function NewUser() {
                         <Form.Field
                             control={Input}
                             fluid
-                            error={errors.name ? {content: 'Please enter a name', pointing: 'below'} : null}
+                            error={errors.name ? {content: 'Please enter a Positive Incident', pointing: 'below'} : null}
                             name="name"
-                            label="Name"
-                            placeholder= "Name"
-                            onChange={handleChange}
-                        />
-                        <Form.Field
-                            control={Input}
-                            fluid
-                            error={errors.email ? {content: 'Please enter a valid email', pointing: 'below'} : null}
-                            name="email"
-                            label="Email"
-                            placeholder= "Eamil"
-                            type="email"
-                            onChange={handleChange}
-                        />
-                        <Form.Field
-                            control={Input}
-                            fluid
-                            error={errors.password ? {content: 'Please enter a password', pointing: 'below'} : null}
-                            name="password"
-                            label="Password"
-                            placeholder= "Password"
-                            type="password"
+                            label="Positive Incident Type"
+                            placeholder= "Positive Incident Type"
                             onChange={handleChange}
                         />
                         <Form.Field
@@ -125,4 +97,4 @@ function NewUser() {
     )
 }
 
-export default NewUser
+export default NewPositive

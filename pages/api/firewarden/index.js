@@ -10,7 +10,7 @@ export default async (req, res) => {
         case 'GET':
             try {
                 const firewardens = await Firewarden.find({}).sort({name: 'asc'})
-                res.status(200).json({success: true, data: firewardens})
+                res.status(200).json({success: true, firewardenData: firewardens})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -18,7 +18,7 @@ export default async (req, res) => {
         case 'POST':
             try {
                 const firewarden = await Firewarden.create(req.body)
-                res.status(201).json({success: true, data: firewarden})
+                res.status(201).json({success: true, firewardenData: firewarden})
             } catch (error) {
                 res.status(400).json({success: false, error})
             }

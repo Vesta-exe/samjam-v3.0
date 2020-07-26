@@ -18,7 +18,7 @@ export default async (req, res) => {
                 if (!rsa) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: rsa})
+                res.status(200).json({success: true, rsaData: rsa})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -33,7 +33,7 @@ export default async (req, res) => {
                 if (!rsa) {
                     return res.status(400).json({success: false})
                 }
-                res.status(200).json({success: true, data: rsa})
+                res.status(200).json({success: true, rsaData: rsa})
             } catch (error) {
                 res.status(400).json({success: false})
             }
@@ -45,7 +45,7 @@ export default async (req, res) => {
                 if (!deleteRsa) {
                     return res.status(400).json({succes: false})
                 }
-                res.status(200).json({success: true, data: {}})
+                res.status(200).json({success: true, rsaData: {}})
             } catch (error) {
                 res.status(400).json({success: false})
             }

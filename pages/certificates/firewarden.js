@@ -1,4 +1,4 @@
-import {Table, Header, Icon} from 'semantic-ui-react'
+import {Table, Header, Icon, Segment} from 'semantic-ui-react'
 import baseUrl from '../../utils/baseUrl'
 import formatDate from '../../utils/formatDate'
 
@@ -6,10 +6,12 @@ function Firewarden({employees}) {
 
     return (
         <div>
-            <Header as="h2">
-                <Icon name="fire extinguisher" color="red"/>
-                Fire Warden Register
-            </Header>
+            <Segment>
+                <Header as="h2">
+                    <Icon name="fire extinguisher" color="red"/>
+                    Fire Warden Register
+                </Header>
+            </Segment>
             <Table celled structured>
                 <Table.Header>
                     <Table.Row>

@@ -1,4 +1,4 @@
-import {Table, Header, Icon} from 'semantic-ui-react'
+import {Table, Header, Icon, Segment} from 'semantic-ui-react'
 import baseUrl from '../../utils/baseUrl'
 import formatDate from '../../utils/formatDate'
 
@@ -6,10 +6,12 @@ function Rsa({employees}) {
 
     return (
         <div>
-            <Header as="h2">
-                <Icon name="martini glass" color="blue"/>
-                RSA Register
-            </Header>
+            <Segment>
+                <Header as="h2">
+                    <Icon name="martini glass" color="blue"/>
+                    RSA Register
+                </Header>
+            </Segment>
             <Table celled structured>
                 <Table.Header>
                     <Table.Row>

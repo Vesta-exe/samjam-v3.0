@@ -1,12 +1,13 @@
 import React from 'react'
-import {Form, Input, Button, Image, Header, Icon, Select, Loader} from 'semantic-ui-react'
-import baseUrl from '../utils/baseUrl'
+import {Form, Input, Button, Header, Icon, Loader} from 'semantic-ui-react'
+import baseUrl from '../../../../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
+import Link from 'next/link'
 import {useRouter} from 'next/router'
 
-function NewPositive() {
+function EditCashhandling({cashhandling}) {
     const [form, setForm] = React.useState({
-        name: ''
+        name: cashhandling.name
     })
     const [isSubmitting, setIsSubmiting] = React.useState(false)
     const [errors, setErrors] = React.useState({})
@@ -15,7 +16,7 @@ function NewPositive() {
     React.useEffect(() => {
         if(isSubmitting) {
             if (Object.keys(errors).length === 0) {
-                createPositive()
+                updateCashhandling()
             }
             else {
                 setIsSubmiting(false)
@@ -23,10 +24,10 @@ function NewPositive() {
         }  
     })
 
-    const createPositive = async () => {
+    const updateCashhandling = async () => {
         try {
-            const res = await fetch(`${baseUrl}/api/positive`, {
-                method: 'POST',
+            const res = await fetch(`${baseUrl}/api/cashhandling/${router.query.id}`, {
+                method: 'PUT',
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
@@ -66,21 +67,21 @@ function NewPositive() {
     return (
         <>
             <Header as="h2" block>
-                <Icon name="add" color="green"/>
-                Add New User
+                <Icon name="money" color="teal"/>
+                Edit Cash Handling Incident: {cashhandling.name}
             </Header>
             {
                 isSubmitting
                     ? <Loader active inline ='centered'/>
                     : <Form onSubmit={handleSubmit}>
-                        <h3 className="form-required">All fields are required</h3>
                         <Form.Field
                             control={Input}
                             fluid
-                            error={errors.name ? {content: 'Please enter a Positive Incident', pointing: 'below'} : null}
+                            error={errors.name ? {content: 'Please enter a Cash Handling Incident', pointing: 'below'} : null}
                             name="name"
-                            label="Positive Incident Type"
-                            placeholder= "Positive Incident Type"
+                            label="Cash Handling Incident Type"
+                            placeholder= "Cassh Handling Incident Type"
+                            value={form.name}
                             onChange={handleChange}
                         />
                         <Form.Field
@@ -91,10 +92,23 @@ function NewPositive() {
                             content="Submit"
                             type="submit"
                         />
+                        <Link href={'/admin'}>
+                            <Button color="red" icon labelPosition="left" floated="right">
+                                <Icon name="cancel"/>
+                                Cancel
+                            </Button>
+                        </Link>
                     </Form>
             }        
         </>
     )
 }
 
-export default NewPositive
+EditCashhandling.getInitialProps = async ({query: {id}}) => {
+    const cashhandling = await fetch(`${baseUrl}/api/cashhandling/${id}`)
+    const {cashhandlingData} = await cashhandling.json()
+
+    return {cashhandling: cashhandlingData}
+}
+
+export default EditCashhandling

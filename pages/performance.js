@@ -38,7 +38,7 @@ function Performance({performances}) {
                             <Table.Row key={performance.id}>
                                 <Table.Cell>{formatDate(performance.date)}</Table.Cell>
                                 <Table.Cell>{performance.manager}</Table.Cell>
-                                <Table.Cell>{performance.employee}</Table.Cell>
+                                <Table.Cell>{performance.employee.name}</Table.Cell>
                                 <Table.Cell>{performance.type}</Table.Cell>
                                 <Table.Cell>{performance.incident}</Table.Cell>
                                 <Table.Cell>{performance.description}</Table.Cell>

@@ -14,6 +14,10 @@ export default async (req, res) => {
         case 'GET':
             try {
                 const performance = await Performance.findById(id)
+                .populate({
+                    path: "employee",
+                    model: "Employee"
+                })
 
                 if (!performance) {
                     return res.status(400).json({success: false})

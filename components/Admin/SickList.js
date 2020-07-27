@@ -2,19 +2,13 @@ import React from 'react'
 import {Header, Icon, Segment, Button, Table} from 'semantic-ui-react'
 import Link from 'next/link'
 
-function PositiveList({positives}) {
+function SickList({sicks}) {
     return (
         <div>
             <Segment>
                 <Header as="h2">
-                    <Icon name="list alternate"/>
-                    Nature of Incidents
-                </Header>
-            </Segment>
-            <Segment>
-                <Header as="h2">
-                    <Icon name="add" color="green"/>
-                    Positive
+                    <Icon name="frown" color="olive"/>
+                    Sick
                 </Header>
             </Segment>
             <Table celled structured>
@@ -26,19 +20,19 @@ function PositiveList({positives}) {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {positives.map(positive => {
+                    {sicks.map(sick => {
                         return (
-                            <Table.Row key={positive.id}>
-                                <Table.Cell>{positive.name}</Table.Cell>
+                            <Table.Row key={sick.id}>
+                                <Table.Cell>{sick.name}</Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/positive/${positive._id}/edit`}>
+                                    <Link href={`/admin/sick/${sick._id}/edit`}>
                                         <Button icon color="blue">
                                             <Icon name="edit"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/positive/${positive._id}`}>
+                                    <Link href={`/admin/sick/${sick._id}`}>
                                         <Button icon color="green">
                                             <Icon name="eye"/>
                                         </Button>
@@ -53,4 +47,4 @@ function PositiveList({positives}) {
     )
 }
 
-export default PositiveList
+export default SickList

@@ -17,6 +17,11 @@ function PerformanceNote({performance}) {
         }
     }, [isDeleting])
 
+    const isPositive = performance.type === "Positive"
+    const isNegative = performance.type === "Negative"
+    const isSick = performance.type === "Sick"
+    const isCashhandling = performance.type === "Cash Handling"
+
     const open = () => setConfirm(true)
     const close = () => setConfirm(false)
 
@@ -40,21 +45,41 @@ function PerformanceNote({performance}) {
     return <>
             <Header as="h2" block>
                 <Icon name="chart area" color="purple"/>
-                {performance.employee} Performance Note
+                {performance.employee.name} Performance Note
             </Header>
             {isDeleting
                 ? <Loader active/>
                 : <Segment raised>
-                    <Label color='blue' ribbon>
-                        {formatDate(performance.date)}
-                    </Label>
+                    {isPositive &&
+                        <Label color='green' ribbon>
+                            {formatDate(performance.date)}
+                        </Label>
+                    }
+                    {isNegative &&
+                        <Label color='red' ribbon>
+                            {formatDate(performance.date)}
+                        </Label>
+                    }
+                    {isSick &&
+                        <Label color='olive' ribbon>
+                            {formatDate(performance.date)}
+                        </Label>
+                    }
+                    {isCashhandling &&
+                        <Label color='teal' ribbon>
+                            {formatDate(performance.date)}
+                        </Label>
+                    }
                     <Item.Group>
                         <Item>
                             <Item.Content>
-                                <p><strong>Created By: </strong>{performance.manager}</p>
+                                <p><strong>Manager: </strong>{performance.manager}</p>
                                 <p><strong>Note Type: </strong>{performance.type}</p>
                                 <p><strong>Incident Type: </strong>{performance.incident}</p>
                                 <p><strong>Description: </strong>{performance.description}</p>
+                                <p><strong>Followup Manager: </strong>{performance.followupManager}</p>
+                                <p><strong>Followup Description: </strong>{performance.followupDescription}</p>
+                                <p><strong>Updated: </strong>{formatDate(performance.updatedAt)}</p>
                             </Item.Content>
                         </Item>
                     </Item.Group>
@@ -80,8 +105,8 @@ function PerformanceNote({performance}) {
 
 PerformanceNote.getInitialProps = async ({query: {id}}) => {
     const performance = await fetch(`${baseUrl}/api/performance/${id}`)
-    const {perfromanceData} = await performance.json()
-    return {performance: perfromanceData}
+    const {performanceData} = await performance.json()
+    return {performance: performanceData}
 }
 
 export default PerformanceNote

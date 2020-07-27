@@ -11,62 +11,8 @@ const typeOptions = [
     {key: 'Sick', text: 'Sick', value: 'Sick'},
     {key: 'Cashhandling', text: 'Cash Handling', value: 'Cash Handling'},
 ]
-const positiveOptions = [
-    {key: 'AchievedSalesTarget', text: 'Achieved Sales Target', value: 'Achieved Sales Target'},
-    {key: 'ExceptionalSalesResults', text: 'Exceptional Sales Results', value: 'Exceptional Sales Results'},
-    {key: 'PositiveWorkPerformance', text: 'Positive Work Performance', value: 'Positive Work Performance'},
-    {key: 'PositvieLeadershipSkills', text: 'Positvie Leadership Skills', value: 'Positvie Leadership Skills'},
-    {key: 'PositiveTeamworkSkills', text: 'Positive Teamwork Skills', value: 'Positive Teamwork Skills'},
-]
 
-const negativeOptions = [
-    {key: 'AbandonmentofShift', text: 'Abandonment of Shift', value: 'Abandonment of Shift'},
-    {key: 'Bullying', text: 'Bullying', value: 'Bullying'},
-    {key: 'DestructionDamage of Property', text: 'Destruction/Damage of Property', value: 'Destruction/Damage of Property'},
-    {key: 'Harassment', text: 'Harassment', value: 'Harassment'},
-    {key: 'Fighting', text: 'Fighting', value: 'Fighting'},
-    {key: 'GroomingPresentation', text: 'Grooming/Presentation', value: 'Grooming/Presentation'},
-    {key: 'Insubordination', text: 'Insubordination', value: 'Insubordination'},
-    {key: 'IntimidatingThreating Others', text: 'Intimidating/Threating Others', value: 'Intimidating/Threating Others'},
-    {key: 'IntoxicatedonShift', text: 'Intoxicated on Shift', value: 'Intoxicated on Shift'},
-    {key: 'Late', text: 'Late', value: 'Late'},
-    {key: 'LeavingWorkEarly', text: 'Leaving Work Early', value: 'Leaving Work Early'},
-    {key: 'Lessthan3hrsNotice', text: 'Less than 3hrs Notice', value: 'Less than 3hrs Notice'},
-    {key: 'NegativeLeadershipSkills', text: 'Negative Leadership Skills', value: 'Negative Leadership Skills'},
-    {key: 'NegativeTeamworkSkills', text: 'Negative Teamwork Skills', value: 'Negative Teamwork Skills'},
-    {key: 'NegligenceinthePerformanceofDuties', text: 'Negligence in the Performance of Duties', value: 'Negligence in the Performance of Duties'},
-    {key: 'PoorWorkPerformance', text: 'Poor Work Performance', value: 'Poor Work Performance'},
-    {key: 'PossessionofAlcohol', text: 'Possession of Alcohol', value: 'Possession of Alcohol'},
-    {key: 'PossessionofFirearmsExplosives etc', text: 'Possession of Firearms/Explosives etc', value: 'Possession of Firearms/Explosives etc'},
-    {key: 'PossessionofIllegalSubstances', text: 'Possession of Illegal Substances', value: 'Possession of Illegal Substances'},
-    {key: 'PostingAlteringMaterialonNoticeBoards', text: 'Posting/Altering Material on Notice Boards', value: 'Posting/Altering Material on Notice Boards'},
-    {key: 'RefusingtoPerformDutiesImplicitylytotheJob', text: 'Refusing to Perform Duties Implicityly to the Job', value: 'Refusing to Perform Duties Implicityly to the Job'},
-    {key: 'Rudeness', text: 'Rudeness', value: 'Rudeness'},
-    {key: 'SexualHarassment', text: 'Sexual Harassment', value: 'Sexual Harassment'},
-    {key: 'SleepingonShift', text: 'Sleeping on Shift', value: 'Sleeping on Shift'},
-    {key: 'TakingUnauthorisedBreaks', text: 'Taking Unauthorised Breaks', value: 'Taking Unauthorised Breaks'},
-    {key: 'Theft', text: 'Theft', value: 'Theft'},
-    {key: 'UndertheInfluenceofAlcohol', text: 'Under the Influence of Alcohol', value: 'Under the Influence of Alcohol'},
-    {key: 'UndertheInfluenceofIllegalSubstances', text: 'Under the Influence of Illegal Substances', value: 'Under the Influence of Illegal Substances'},
-    {key: 'UseofProfaneLanguage', text: 'Use of Profane Language', value: 'Use of Profane Language'},
-    {key: 'VerbalAbuse', text: 'Verbal Abuse', value: 'Verbal Abuse'},
-    {key: 'WilfullyandKnowinglyMakingFalseStatements', text: 'Wilfully and Knowingly Making False Statements', value: 'Wilfully and Knowingly Making False Statements'},
-    {key: 'WilfullyViolatingSafteyRules/Practices', text: 'Wilfully Violating Saftey Rules Practices', value: 'Wilfully Violating Saftey Rules Practices'},
-]
-
-const cashhandlingOptions = [
-    {key: 'LargeNegativeVariance', text: 'Large Negative Variance', value: 'Large Negative Variance'},
-    {key: 'LargePositiveVariance', text: 'Large Positive Variance', value: 'Large Positive Variance'},
-    {key: 'MissingRefundReceipts', text: 'Missing Refund Receipts', value: 'Missing Refund Receipts'},
-    {key: 'MissingStaffReceipts', text: 'Missing Staff Receipts', value: 'Missing Staff Receipts'},
-    {key: 'ProcessingErrors', text: 'Processing Errors', value: 'Processing Errors'},
-]
-const sickOptions = [
-    {key: 'LeavingWorkEarlySick', text: 'Leaving Work Early Sick', value: 'Leaving Work Early Sick'},
-    {key: 'Sick', text: 'Sick', value: 'Sick'},
-]
-
-function NewPerformance({employees}) {
+function NewPerformance({employees, positives, negatives, sicks, cashhandlings}) {
     const [form, setForm] = React.useState({
         manager: '',
         employee: '',
@@ -124,6 +70,7 @@ function NewPerformance({employees}) {
             ...form,
             [data.name]: data.value
         })
+        console.log(form)
     }
 
     const handleSubmit = (e) => {
@@ -157,12 +104,52 @@ function NewPerformance({employees}) {
         return err
     }
 
-    const loadOptions = employees.map((employee) => {
+    const employeeOptions = employees.map((employee) => {
         return (
             {
                 key: employee.name,
-                value: employee.ObjectId, 
+                value: employee._id, 
                 text: employee.name,
+            }
+        )
+    })
+
+    const positiveOptions = positives.map((positive) => {
+        return (
+            {
+                key: positive.name,
+                value: positive.name, 
+                text: positive.name,
+            }
+        )
+    })
+
+    const negativeOptions = negatives.map((negative) => {
+        return (
+            {
+                key: negative.name,
+                value: negative.name, 
+                text: negative.name,
+            }
+        )
+    })
+
+    const sickOptions = sicks.map((sick) => {
+        return (
+            {
+                key: sick.name,
+                value: sick.name, 
+                text: sick.name,
+            }
+        )
+    })
+
+    const cashhandlingOptions = cashhandlings.map((cashhandling) => {
+        return (
+            {
+                key: cashhandling.name,
+                value: cashhandling.name, 
+                text: cashhandling.name,
             }
         )
     })
@@ -192,8 +179,8 @@ function NewPerformance({employees}) {
                                 name="employee"
                                 label="Employee"
                                 placeholder="Employee"
-                                options={loadOptions}
-                                onChange={handleChange}
+                                options={employeeOptions}
+                                onChange={handleSelectChange}
                             />
                             <Form.Field
                                 control={Input}
@@ -284,10 +271,24 @@ function NewPerformance({employees}) {
 }
 
 NewPerformance.getInitialProps = async () => {
-    const performance = await fetch(`${baseUrl}/api/employees`)
-    const {performanceData} = await performance.json()
+    const employees = await fetch(`${baseUrl}/api/employees`)
+    const positives = await fetch(`${baseUrl}/api/positive`)
+    const negatives = await fetch(`${baseUrl}/api/negative`)
+    const sicks = await fetch(`${baseUrl}/api/sick`)
+    const cashhandlings = await fetch(`${baseUrl}/api/cashhandling`)
+    const {employeeData} = await employees.json()
+    const {positiveData} = await positives.json()
+    const {negativeData} = await negatives.json()
+    const {sickData} = await sicks.json()
+    const {cashhandlingData} = await cashhandlings.json()
 
-    return {employees: performanceData}
+    return {
+        employees: employeeData,
+        positives: positiveData,
+        negatives: negativeData,
+        sicks: sickData,
+        cashhandlings: cashhandlingData
+    }
 }
 
 export default NewPerformance

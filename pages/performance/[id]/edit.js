@@ -11,70 +11,16 @@ const typeOptions = [
     {key: 'Sick', text: 'Sick', value: 'Sick'},
     {key: 'Cashhandling', text: 'Cash Handling', value: 'Cash Handling'},
 ]
-const positiveOptions = [
-    {key: 'AchievedSalesTarget', text: 'Achieved Sales Target', value: 'Achieved Sales Target'},
-    {key: 'ExceptionalSalesResults', text: 'Exceptional Sales Results', value: 'Exceptional Sales Results'},
-    {key: 'PositiveWorkPerformance', text: 'Positive Work Performance', value: 'Positive Work Performance'},
-    {key: 'PositvieLeadershipSkills', text: 'Positvie Leadership Skills', value: 'Positvie Leadership Skills'},
-    {key: 'PositiveTeamworkSkills', text: 'Positive Teamwork Skills', value: 'Positive Teamwork Skills'},
-]
 
-const negativeOptions = [
-    {key: 'AbandonmentofShift', text: 'Abandonment of Shift', value: 'Abandonment of Shift'},
-    {key: 'Bullying', text: 'Bullying', value: 'Bullying'},
-    {key: 'DestructionDamage of Property', text: 'Destruction/Damage of Property', value: 'Destruction/Damage of Property'},
-    {key: 'Harassment', text: 'Harassment', value: 'Harassment'},
-    {key: 'Fighting', text: 'Fighting', value: 'Fighting'},
-    {key: 'GroomingPresentation', text: 'Grooming/Presentation', value: 'Grooming/Presentation'},
-    {key: 'Insubordination', text: 'Insubordination', value: 'Insubordination'},
-    {key: 'IntimidatingThreating Others', text: 'Intimidating/Threating Others', value: 'Intimidating/Threating Others'},
-    {key: 'IntoxicatedonShift', text: 'Intoxicated on Shift', value: 'Intoxicated on Shift'},
-    {key: 'Late', text: 'Late', value: 'Late'},
-    {key: 'LeavingWorkEarly', text: 'Leaving Work Early', value: 'Leaving Work Early'},
-    {key: 'Lessthan3hrsNotice', text: 'Less than 3hrs Notice', value: 'Less than 3hrs Notice'},
-    {key: 'NegativeLeadershipSkills', text: 'Negative Leadership Skills', value: 'Negative Leadership Skills'},
-    {key: 'NegativeTeamworkSkills', text: 'Negative Teamwork Skills', value: 'Negative Teamwork Skills'},
-    {key: 'NegligenceinthePerformanceofDuties', text: 'Negligence in the Performance of Duties', value: 'Negligence in the Performance of Duties'},
-    {key: 'PoorWorkPerformance', text: 'Poor Work Performance', value: 'Poor Work Performance'},
-    {key: 'PossessionofAlcohol', text: 'Possession of Alcohol', value: 'Possession of Alcohol'},
-    {key: 'PossessionofFirearmsExplosives etc', text: 'Possession of Firearms/Explosives etc', value: 'Possession of Firearms/Explosives etc'},
-    {key: 'PossessionofIllegalSubstances', text: 'Possession of Illegal Substances', value: 'Possession of Illegal Substances'},
-    {key: 'PostingAlteringMaterialonNoticeBoards', text: 'Posting/Altering Material on Notice Boards', value: 'Posting/Altering Material on Notice Boards'},
-    {key: 'RefusingtoPerformDutiesImplicitylytotheJob', text: 'Refusing to Perform Duties Implicityly to the Job', value: 'Refusing to Perform Duties Implicityly to the Job'},
-    {key: 'Rudeness', text: 'Rudeness', value: 'Rudeness'},
-    {key: 'SexualHarassment', text: 'Sexual Harassment', value: 'Sexual Harassment'},
-    {key: 'SleepingonShift', text: 'Sleeping on Shift', value: 'Sleeping on Shift'},
-    {key: 'TakingUnauthorisedBreaks', text: 'Taking Unauthorised Breaks', value: 'Taking Unauthorised Breaks'},
-    {key: 'Theft', text: 'Theft', value: 'Theft'},
-    {key: 'UndertheInfluenceofAlcohol', text: 'Under the Influence of Alcohol', value: 'Under the Influence of Alcohol'},
-    {key: 'UndertheInfluenceofIllegalSubstances', text: 'Under the Influence of Illegal Substances', value: 'Under the Influence of Illegal Substances'},
-    {key: 'UseofProfaneLanguage', text: 'Use of Profane Language', value: 'Use of Profane Language'},
-    {key: 'VerbalAbuse', text: 'Verbal Abuse', value: 'Verbal Abuse'},
-    {key: 'WilfullyandKnowinglyMakingFalseStatements', text: 'Wilfully and Knowingly Making False Statements', value: 'Wilfully and Knowingly Making False Statements'},
-    {key: 'WilfullyViolatingSafteyRules/Practices', text: 'Wilfully Violating Saftey Rules Practices', value: 'Wilfully Violating Saftey Rules Practices'},
-]
-
-const cashhandlingOptions = [
-    {key: 'LargeNegativeVariance', text: 'Large Negative Variance', value: 'Large Negative Variance'},
-    {key: 'LargePositiveVariance', text: 'Large Positive Variance', value: 'Large Positive Variance'},
-    {key: 'MissingRefundReceipts', text: 'Missing Refund Receipts', value: 'Missing Refund Receipts'},
-    {key: 'MissingStaffReceipts', text: 'Missing Staff Receipts', value: 'Missing Staff Receipts'},
-    {key: 'ProcessingErrors', text: 'Processing Errors', value: 'Processing Errors'},
-]
-const sickOptions = [
-    {key: 'LeavingWorkEarlySick', text: 'Leaving Work Early Sick', value: 'Leaving Work Early Sick'},
-    {key: 'Sick', text: 'Sick', value: 'Sick'},
-]
-
-function EditPerformance({performance}) {
+function EditPerformance({performance, employees, positives, negatives, sicks, cashhandlings}) {
     const [form, setForm] = React.useState({
         manager: performance.manager,
-        employee: performance.employee,
+        employee: performance.employee._id,
         date: performance.date,
         type: performance.type,
         incident: performance.incident,
         description: performance.description,
-        followupManger: performance.followupManager,
+        followupManager: performance.followupManager,
         followupDescription: performance.followupDescription
     })
     const [isSubmitting, setIsSubmiting] = React.useState(false)
@@ -99,8 +45,8 @@ function EditPerformance({performance}) {
 
     const createPerformance = async () => {
         try {
-            const res = await fetch(`${baseUrl}/api/performance`, {
-                method: 'POST',
+            const res = await fetch(`${baseUrl}/api/performance/${router.query.id}`, {
+                method: 'PUT',
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
@@ -126,6 +72,7 @@ function EditPerformance({performance}) {
             ...form,
             [data.name]: data.value
         })
+        console.log(form)
     }
 
     const handleSubmit = (e) => {
@@ -159,11 +106,61 @@ function EditPerformance({performance}) {
         return err
     }
 
+    const employeeOptions = employees.map((employee) => {
+        return (
+            {
+                key: employee.name,
+                value: employee._id, 
+                text: employee.name,
+            }
+        )
+    })
+
+    const positiveOptions = positives.map((positive) => {
+        return (
+            {
+                key: positive.name,
+                value: positive.name, 
+                text: positive.name,
+            }
+        )
+    })
+
+    const negativeOptions = negatives.map((negative) => {
+        return (
+            {
+                key: negative.name,
+                value: negative.name, 
+                text: negative.name,
+            }
+        )
+    })
+
+    const sickOptions = sicks.map((sick) => {
+        return (
+            {
+                key: sick.name,
+                value: sick.name, 
+                text: sick.name,
+            }
+        )
+    })
+
+    const cashhandlingOptions = cashhandlings.map((cashhandling) => {
+        return (
+            {
+                key: cashhandling.name,
+                value: cashhandling.name, 
+                text: cashhandling.name,
+            }
+        )
+    })
+
     return (
         <>
             <Header as="h2" block>
-                <Icon name="add" color="green"/>
-                Add New Performance Note
+                <Icon name="edit" color="blue"/>
+                Edit Performance Note for {performance.employee.name}
             </Header>
             {
                 isSubmitting
@@ -176,17 +173,18 @@ function EditPerformance({performance}) {
                                 name="manager"
                                 label="Manager"
                                 placeholder= "Manager"
-                                value={performance.manager}
+                                value={form.manager}
                                 onChange={handleChange}
                             />
                             <Form.Field
-                                control={Input}
+                                control={Select}
                                 error={errors.employee ? {content: 'Please enter a Employee', pointing: 'below'} : null}
                                 name="employee"
                                 label="Employee"
                                 placeholder="Employee"
-                                value={performance.employee}
-                                onChange={handleChange}
+                                options={employeeOptions}
+                                value={form.employee}
+                                onChange={handleSelectChange}
                             />
                             <Form.Field
                                 control={Input}
@@ -195,7 +193,7 @@ function EditPerformance({performance}) {
                                 label="Date"
                                 placeholder= "Date"
                                 type="date"
-                                value={performance.date}
+                                value={form.date}
                                 onChange={handleChange}
                             />
                             <Form.Field
@@ -204,7 +202,7 @@ function EditPerformance({performance}) {
                                 name="type"
                                 options={typeOptions}
                                 placeholder="Type"
-                                value={performance.type}
+                                value={form.type}
                                 onChange={handleSelectChange}
                             />
                             {isPositive &&
@@ -214,7 +212,7 @@ function EditPerformance({performance}) {
                                     name="incident"
                                     options={positiveOptions}
                                     placeholder="Incident"
-                                    value={performance.incident}
+                                    value={form.incident}
                                     onChange={handleSelectChange}
                                 />
                             }
@@ -225,7 +223,7 @@ function EditPerformance({performance}) {
                                     name="incident"
                                     options={negativeOptions}
                                     placeholder="Incident"
-                                    value={performance.incident}
+                                    value={form.incident}
                                     onChange={handleSelectChange}
                                 />
                             }
@@ -236,7 +234,7 @@ function EditPerformance({performance}) {
                                     name="incident"
                                     options={sickOptions}
                                     placeholder="Incident"
-                                    value={performance.incident}
+                                    value={form.incident}
                                     onChange={handleSelectChange}
                                 />
                             }
@@ -247,7 +245,7 @@ function EditPerformance({performance}) {
                                     name="incident"
                                     options={cashhandlingOptions}
                                     placeholder="Incident"
-                                    value={performance.incident}
+                                    value={form.incident}
                                     onChange={handleSelectChange}
                                 />
                             }
@@ -257,7 +255,7 @@ function EditPerformance({performance}) {
                                 name="description"
                                 label="Description"
                                 placeholder="Description"
-                                value={performance.description}
+                                value={form.description}
                                 onChange={handleChange}
                             />
                             <Form.Field
@@ -265,7 +263,7 @@ function EditPerformance({performance}) {
                                 name="followupManager"
                                 label="Followup Manager"
                                 placeholder="Followup Manager"
-                                value={performance.followupManager}
+                                value={form.followupManager}
                                 onChange={handleChange}
                             />
                             <Form.Field
@@ -273,7 +271,7 @@ function EditPerformance({performance}) {
                                 name="followupDescription"
                                 label="Followup Description"
                                 placeholder="Followup Description"
-                                value={performance.followupDescription}
+                                value={form.followupDescription}
                                 onChange={handleChange}
                             />
                             <Link href='/performance'>
@@ -301,9 +299,26 @@ function EditPerformance({performance}) {
 
 EditPerformance.getInitialProps = async ({query: {id}}) => {
     const performance = await fetch(`${baseUrl}/api/performance/${id}`)
+    const employees = await fetch(`${baseUrl}/api/employees`)
+    const positives = await fetch(`${baseUrl}/api/positive`)
+    const negatives = await fetch(`${baseUrl}/api/negative`)
+    const sicks = await fetch(`${baseUrl}/api/sick`)
+    const cashhandlings = await fetch(`${baseUrl}/api/cashhandling`)
     const {performanceData} = await performance.json()
+    const {employeeData} = await employees.json()
+    const {positiveData} = await positives.json()
+    const {negativeData} = await negatives.json()
+    const {sickData} = await sicks.json()
+    const {cashhandlingData} = await cashhandlings.json()
 
-    return {performance: performanceData}
+    return {
+        performance: performanceData,
+        employees: employeeData,
+        positives: positiveData,
+        negatives: negativeData,
+        sicks: sickData,
+        cashhandlings: cashhandlingData
+    }
 }
 
 export default EditPerformance

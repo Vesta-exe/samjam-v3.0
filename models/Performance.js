@@ -28,7 +28,7 @@ const PerformanceSchema = new mongoose.Schema ({
         type: String,
         required: true
     },
-    followupManger: {
+    followupManager: {
         type: String,
         default: ''
     },

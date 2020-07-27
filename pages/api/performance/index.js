@@ -9,7 +9,12 @@ export default async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const performances = await Performance.find({}).sort({date: -1})
+                const performances = await Performance.find({})
+                .sort({date: -1})
+                .populate({
+                    path: "employee",
+                    model: "Employee"
+                })
                 res.status(200).json({success: true, performanceData: performances})
             } catch (error) {
                 res.status(400).json({success: false})

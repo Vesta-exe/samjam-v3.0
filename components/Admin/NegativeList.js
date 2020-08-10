@@ -15,8 +15,8 @@ function NegativeList({negatives}) {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
-                        <Table.HeaderCell rowSpan='2'>Edit</Table.HeaderCell>
                         <Table.HeaderCell rowSpan='2'>View</Table.HeaderCell>
+                        <Table.HeaderCell rowSpan='2'>Edit</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -25,16 +25,16 @@ function NegativeList({negatives}) {
                             <Table.Row key={negative.id}>
                                 <Table.Cell>{negative.name}</Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/negative/${negative._id}/edit`}>
-                                        <Button icon color="blue">
-                                            <Icon name="edit"/>
+                                    <Link href={`/admin/negative/${negative._id}`}>
+                                        <Button icon color="green">
+                                            <Icon name="eye"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/negative/${negative._id}`}>
-                                        <Button icon color="green">
-                                            <Icon name="eye"/>
+                                    <Link href={`/admin/negative/${negative._id}/edit`}>
+                                        <Button icon color="blue">
+                                            <Icon name="edit"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>

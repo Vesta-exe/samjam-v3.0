@@ -114,16 +114,6 @@ function Header({user}) {
                     </Menu.Item>
                 </Link>
 
-                <Link href="/bugreport">
-                    <Menu.Item header active={isActive("/bugreport")}>
-                        <Icon
-                            name="bug"
-                            size="large"
-                        />
-                        Bug Report
-                    </Menu.Item>
-                </Link>
-
                 <Link href="/admin">
                     <Menu.Item header active={isActive("/admin")}>
                         <Icon

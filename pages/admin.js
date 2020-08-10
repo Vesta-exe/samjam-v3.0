@@ -62,6 +62,8 @@ function Admin({users, positives, negatives, sicks, cashhandlings}) {
                 Add Cash Handling Incident
             </Button>
         </Link>
+        <br/>
+        <br/>
     </>
 }
 

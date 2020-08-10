@@ -21,8 +21,8 @@ function PositiveList({positives}) {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
-                        <Table.HeaderCell rowSpan='2'>Edit</Table.HeaderCell>
                         <Table.HeaderCell rowSpan='2'>View</Table.HeaderCell>
+                        <Table.HeaderCell rowSpan='2'>Edit</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -31,16 +31,16 @@ function PositiveList({positives}) {
                             <Table.Row key={positive.id}>
                                 <Table.Cell>{positive.name}</Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/positive/${positive._id}/edit`}>
-                                        <Button icon color="blue">
-                                            <Icon name="edit"/>
+                                    <Link href={`/admin/positive/${positive._id}`}>
+                                        <Button icon color="green">
+                                            <Icon name="eye"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/positive/${positive._id}`}>
-                                        <Button icon color="green">
-                                            <Icon name="eye"/>
+                                    <Link href={`/admin/positive/${positive._id}/edit`}>
+                                        <Button icon color="blue">
+                                            <Icon name="edit"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>

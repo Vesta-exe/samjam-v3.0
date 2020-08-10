@@ -55,6 +55,8 @@ function EmployeeRegister({employee, performances}) {
                 )
             }
         })}
+        <br/>
+        <br/>
     </>
 }
 

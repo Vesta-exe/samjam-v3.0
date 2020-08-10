@@ -15,8 +15,8 @@ function CashhandlingList({cashhandlings}) {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell rowSpan='2'>Name</Table.HeaderCell>
-                        <Table.HeaderCell rowSpan='2'>Edit</Table.HeaderCell>
                         <Table.HeaderCell rowSpan='2'>View</Table.HeaderCell>
+                        <Table.HeaderCell rowSpan='2'>Edit</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -25,16 +25,16 @@ function CashhandlingList({cashhandlings}) {
                             <Table.Row key={cashhandling.id}>
                                 <Table.Cell>{cashhandling.name}</Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/cashhandling/${cashhandling._id}/edit`}>
-                                        <Button icon color="blue">
-                                            <Icon name="edit"/>
+                                    <Link href={`/admin/cashhandling/${cashhandling._id}`}>
+                                        <Button icon color="green">
+                                            <Icon name="eye"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/admin/cashhandling/${cashhandling._id}`}>
-                                        <Button icon color="green">
-                                            <Icon name="eye"/>
+                                    <Link href={`/admin/cashhandling/${cashhandling._id}/edit`}>
+                                        <Button icon color="blue">
+                                            <Icon name="edit"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>

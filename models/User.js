@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         requred: true,
         default: 'user',
-        enum: ["user", "admin", "inactive"]
+        enum: ["user", "admin"]
     }
 }, {
     timestamps: true

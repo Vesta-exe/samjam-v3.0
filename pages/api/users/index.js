@@ -31,7 +31,7 @@ export default async (req, res) => {
                     password: hash
                 }).save()
                 console.log({newUser})
-                const token = jwt.sign({userId: newUser.Id}, process.env.JWT_SECRET, {expiersIn: '7d'})
+                const token = jwt.sign({userId: newUser.Id}, process.env.JWT_SECRET, {expiersIn: '30m'})
                 res.status(201).json(token)
             } catch (error) {
                 res.status(400).json({success: false})

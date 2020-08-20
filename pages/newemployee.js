@@ -3,6 +3,8 @@ import {Form, Input, Button, Image, Header, Icon, Select, Loader} from 'semantic
 import baseUrl from '../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 //TODO: Find way to upload image and save to database with form may have to do an indivdual edit after employee created
 
@@ -37,6 +39,13 @@ const areaOptions = [
 ]
 
 function NewEmployee() {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     const [form, setForm] = React.useState({
         name: '',
         dob: '',

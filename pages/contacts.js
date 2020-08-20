@@ -1,7 +1,16 @@
 import {Table, Header, Icon, Segment} from 'semantic-ui-react'
 import baseUrl from '../utils/baseUrl'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 function Contacts({employees}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     return (
         <div>
             <Segment>

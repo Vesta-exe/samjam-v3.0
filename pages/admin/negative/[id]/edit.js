@@ -4,8 +4,17 @@ import baseUrl from '../../../../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 function EditNegative({negative}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     const [form, setForm] = React.useState({
         name: negative.name
     })

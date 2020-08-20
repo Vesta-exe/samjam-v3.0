@@ -1,8 +1,17 @@
 import {Table, Header, Icon, Segment} from 'semantic-ui-react'
 import baseUrl from '../../utils/baseUrl'
 import formatDate from '../../utils/formatDate'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
+
 
 function Firstaid({employees}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
 
     return (
         <div>

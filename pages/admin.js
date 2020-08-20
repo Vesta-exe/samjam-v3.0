@@ -8,8 +8,17 @@ import CashhandlingList from '../components/Admin/CashhandlingList'
 import baseUrl from '../utils/baseUrl'
 import {Button, Icon} from 'semantic-ui-react'
 import Link from 'next/link'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 function Admin({users, positives, negatives, sicks, cashhandlings}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     return <>
         <UserList users={users}/>
         <Link href='/newuser'>

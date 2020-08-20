@@ -4,8 +4,17 @@ import {Form, Input, Button, Header, Icon, Loader} from 'semantic-ui-react'
 import baseUrl from '../../../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 function Firstaid({employee}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     const isFirstaid = employee.firstaid === ''
 
     const [form, setForm] = React.useState({

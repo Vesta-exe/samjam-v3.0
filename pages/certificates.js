@@ -1,8 +1,17 @@
 import {Segment, Icon, Header, Button} from 'semantic-ui-react'
 import Link from 'next/link'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 
 function Certificates() {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     return (
         <>
             <Link href="/certificates/rsa">

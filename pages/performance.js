@@ -4,8 +4,16 @@ import Link from 'next/link'
 import baseUrl from '../utils/baseUrl'
 import formatDate from '../utils/formatDate'
 import fetch from 'isomorphic-unfetch'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 function Performance({performances}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
 
     return (
         <div>

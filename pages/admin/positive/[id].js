@@ -3,8 +3,17 @@ import baseUrl from '../../../utils/baseUrl'
 import {Item, Button, Icon, Header, Segment, Loader, Confirm} from 'semantic-ui-react'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 function Positive({positive}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     const [confirm, setConfirm] = React.useState(false)
     const [isDeleting, setIsDeleting] = React.useState(false)
     const router = useRouter()

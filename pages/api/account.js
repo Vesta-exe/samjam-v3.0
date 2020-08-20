@@ -16,12 +16,13 @@ export default async (req, res) => {
             try {
                 const {userId} = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
                 const user = await User.findOne({_id: userId})
-                if(!user) {
-                    return res.status(200).json({success: false})
+                if(user) {
+                    return res.status(200).json(user)
+                } else {
+                    res.status(400).send("User not found")
                 }
-                res.status(200).json({success: true, userData: user})
             } catch (error) {
-                res.status(400).json({success: false})  
+                res.status(403).send("Invalid token")  
             }
             break
             case 'PUT':

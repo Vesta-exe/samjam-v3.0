@@ -4,6 +4,8 @@ import baseUrl from '../../../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 const typeOptions = [
     {key: 'Positive', text: 'Positive', value: 'Positive'},
@@ -13,6 +15,13 @@ const typeOptions = [
 ]
 
 function EditPerformance({performance, employees, positives, negatives, sicks, cashhandlings}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     const [form, setForm] = React.useState({
         manager: performance.manager,
         employee: performance.employee._id,

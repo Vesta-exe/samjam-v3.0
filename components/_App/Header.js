@@ -2,17 +2,19 @@ import {Menu, Container, Image, Icon} from 'semantic-ui-react'
 import Link from 'next/link'
 import Router, {useRouter} from 'next/router'
 import NProgress from 'nprogress'
+import { useFetchUser } from '../../utils/user'
 //import {handleLogout} from '../../utils/auth'
 
 Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-function Header({user}) {
+function Header() {
     //TODO: Delete this line before deploying
-    console.log(user)
     const router = useRouter()
     //const isAdmin = user && user.admin === 'admin'
+    const {user, loading} = useFetchUser()
+    console.log(user, loading)
 
     function isActive(route) {
         return route === router.pathname
@@ -123,16 +125,27 @@ function Header({user}) {
                         Admin
                     </Menu.Item>
                 </Link>
-
-                <Link href="/">
-                    <Menu.Item header>
-                        <Icon
-                            name="sign out"
-                            size="large"
-                        />
-                        Logout
-                    </Menu.Item>
-                </Link>
+                {user && !loading ? (
+                    <Link href="/api/logout">
+                        <Menu.Item header key="/api/logout">
+                            <Icon
+                                name="sign out"
+                                size="large"
+                            />
+                            Logout
+                        </Menu.Item>
+                    </Link>
+                ) : (
+                    <Link href="/api/login">
+                        <Menu.Item header key="/api/login">
+                            <Icon
+                                name="sign in"
+                                size="large"
+                            />
+                            Login
+                        </Menu.Item>
+                    </Link>
+                )}
 
             </Container>
         </Menu>

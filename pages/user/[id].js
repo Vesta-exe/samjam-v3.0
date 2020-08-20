@@ -2,10 +2,19 @@ import fetch from 'isomorphic-unfetch'
 import baseUrl from '../../utils/baseUrl'
 import {Item, Button, Icon} from 'semantic-ui-react'
 import Link from 'next/link'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 //TODO: find way to make user inactive without breaking the performance register
 
 function User({user}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     return (
         <Item.Group>
             <Item>

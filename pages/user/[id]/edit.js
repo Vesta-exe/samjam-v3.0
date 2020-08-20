@@ -4,8 +4,17 @@ import baseUrl from '../../../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+import { useFetchUser } from '../utils/user'
+import Router from 'next/router'
 
 function EditUser({user}) {
+
+    const {user, loading} = useFetchUser()
+
+    if (!user && !loading) {
+        Router.push('/')
+    }
+
     const [form, setForm] = React.useState({
         name: user.name,
         email: user.email,

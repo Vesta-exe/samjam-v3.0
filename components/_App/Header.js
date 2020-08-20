@@ -10,11 +10,10 @@ Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
 function Header() {
-    //TODO: Delete this line before deploying
+    //TODO: Training & User Guides
     const router = useRouter()
     //const isAdmin = user && user.admin === 'admin'
     const {user, loading} = useFetchUser()
-    console.log(user, loading)
 
     function isActive(route) {
         return route === router.pathname
@@ -32,71 +31,82 @@ function Header() {
                         />
                         Samjam
                     </Menu.Item>
-
-                <Link href="/">
-                    <Menu.Item header active={isActive("/")}>
-                    <Icon
-                            as="i"
-                            name="dashboard"
-                            size="large"
-                        />
-                        Dashboard
-                    </Menu.Item>
-                </Link>
-
-                <Link href="/employees">
-                    <Menu.Item header active={isActive("/employees")}>
-                    <Icon
-                            as="i"
-                            name="users"
-                            size="large"
-                        />
-                        Employees
-                    </Menu.Item>
-                </Link>
-
-                <Link href="/newemployee">
-                    <Menu.Item header active={isActive("/newemployee")}>
-                    <Icon
-                            as="i"
-                            name="user plus"
-                            size="large"
-                        />
-                        Add Employee
-                    </Menu.Item>
-                </Link>
-
-                <Link href="/performance">
-                    <Menu.Item header active={isActive("/performance")}>
+                {user && !loading ? (
+                    <Link href="/">
+                        <Menu.Item header active={isActive("/")}>
                         <Icon
-                            name="chart area"
-                            size="large"
-                        />
-                        Performance
-                    </Menu.Item>
-                </Link>
+                                as="i"
+                                name="dashboard"
+                                size="large"
+                            />
+                            Dashboard
+                        </Menu.Item>
+                    </Link>
+                ) : null}
 
-                <Link href="/contacts">
-                    <Menu.Item header active={isActive("/contacts")}>
+                {user && !loading ? (
+                    <Link href="/employees">
+                        <Menu.Item header active={isActive("/employees")}>
                         <Icon
-                            name="address book"
-                            size="large"
-                        />
-                        Contacts
-                    </Menu.Item>
-                </Link>
+                                as="i"
+                                name="users"
+                                size="large"
+                            />
+                            Employees
+                        </Menu.Item>
+                    </Link>
+                ) : null}
 
-                <Link href="/certificates">
-                    <Menu.Item header active={isActive("/certificates")}>
+                {user && !loading ? (
+                    <Link href="/newemployee">
+                        <Menu.Item header active={isActive("/newemployee")}>
                         <Icon
-                            name="certificate"
-                            size="large"
-                        />
-                        Certificates
-                    </Menu.Item>
-                </Link>
+                                as="i"
+                                name="user plus"
+                                size="large"
+                            />
+                            Add Employee
+                        </Menu.Item>
+                    </Link>
+                ) : null}
 
-                <Link href="/training">
+                {user && !loading ? (
+                    <Link href="/performance">
+                        <Menu.Item header active={isActive("/performance")}>
+                            <Icon
+                                name="chart area"
+                                size="large"
+                            />
+                            Performance
+                        </Menu.Item>
+                    </Link>
+                ) : null}
+
+                {user && !loading ? (
+                    <Link href="/contacts">
+                        <Menu.Item header active={isActive("/contacts")}>
+                            <Icon
+                                name="address book"
+                                size="large"
+                            />
+                            Contacts
+                        </Menu.Item>
+                    </Link>
+                ) : null}
+
+                {user && !loading ? (
+                    <Link href="/certificates">
+                        <Menu.Item header active={isActive("/certificates")}>
+                            <Icon
+                                name="certificate"
+                                size="large"
+                            />
+                            Certificates
+                        </Menu.Item>
+                    </Link>
+                ) : null}
+
+                {/* <Link href="/training">
                     <Menu.Item header active={isActive("/training")}>
                         <Icon
                             name="student"
@@ -104,9 +114,9 @@ function Header() {
                         />
                         Training
                     </Menu.Item>
-                </Link>
+                </Link> */}
 
-                <Link href="/userguides">
+                {/* <Link href="/userguides">
                     <Menu.Item header active={isActive("/userguides")}>
                         <Icon
                             name="book"
@@ -114,17 +124,20 @@ function Header() {
                         />
                         User Guides
                     </Menu.Item>
-                </Link>
+                </Link> */}
 
-                <Link href="/admin">
-                    <Menu.Item header active={isActive("/admin")}>
-                        <Icon
-                            name="cogs"
-                            size="large"
-                        />
-                        Admin
-                    </Menu.Item>
-                </Link>
+                {user && !loading ? (
+                    <Link href="/admin">
+                        <Menu.Item header active={isActive("/admin")}>
+                            <Icon
+                                name="cogs"
+                                size="large"
+                            />
+                            Admin
+                        </Menu.Item>
+                    </Link>
+                ): null}
+
                 {user && !loading ? (
                     <Link href="/api/logout">
                         <Menu.Item header key="/api/logout">
@@ -135,17 +148,7 @@ function Header() {
                             Logout
                         </Menu.Item>
                     </Link>
-                ) : (
-                    <Link href="/api/login">
-                        <Menu.Item header key="/api/login">
-                            <Icon
-                                name="sign in"
-                                size="large"
-                            />
-                            Login
-                        </Menu.Item>
-                    </Link>
-                )}
+                ) : null}
 
             </Container>
         </Menu>

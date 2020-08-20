@@ -20,7 +20,7 @@ function Admin({users, positives, negatives, sicks, cashhandlings}) {
     }
 
     return <>
-        <UserList users={users}/>
+        {/* <UserList users={users}/>
         <Link href='/newuser'>
             <Button color="green" icon labelPosition="left">
                 <Icon name="pencil"/>
@@ -28,7 +28,7 @@ function Admin({users, positives, negatives, sicks, cashhandlings}) {
             </Button>
         </Link>
         <br/>
-        <br/>
+        <br/> */}
         <PositiveList positives={positives}/>
         <br/>
         <br/>

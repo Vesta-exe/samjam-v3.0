@@ -4,7 +4,7 @@ import baseUrl from '../../utils/baseUrl'
 import fetch from 'isomorphic-unfetch'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
-import { useFetchUser } from '../utils/user'
+import { useFetchUser } from '../../utils/user'
 import Router from 'next/router'
 
 const typeOptions = [

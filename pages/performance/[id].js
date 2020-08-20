@@ -5,7 +5,7 @@ import formatDate from '../../utils/formatDate'
 import baseUrl from '../../utils/baseUrl'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
-import { useFetchUser } from '../utils/user'
+import { useFetchUser } from '../../utils/user'
 import Router from 'next/router'
 
 function PerformanceNote({performance}) {

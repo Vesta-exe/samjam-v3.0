@@ -5,7 +5,7 @@ import EmployeeCertificates from '../../components/Employee/EmployeeCertificates
 import EmployeeRegister from '../../components/Employee/EmployeeRegister'
 //import EmployeeTraining from '../../components/Employee/EmployeeTraining'
 import baseUrl from '../../utils/baseUrl'
-import { useFetchUser } from '../utils/user'
+import { useFetchUser } from '../../utils/user'
 import Router from 'next/router'
 
 //TODO: Add Performance Segment

@@ -9,7 +9,7 @@ function Home() {
 
   if (user) {
     return (
-      <h1>Welcome {user.name}</h1>
+      <h1>Welcome Back {user.name}</h1>
     )
   }
 

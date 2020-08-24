@@ -7,8 +7,8 @@ export default initAuth0({
     clientId: process.env.clientId,
     clientSecret: process.env.clientSecret,
     scope: 'openid profile',
-    redirectUri: 'http://localhost:3000/api/callback',
-    postLogoutRedirectUri: 'http://localhost:3000',
+    redirectUri: process.env.redirectUri,
+    postLogoutRedirectUri: process.env.postLogoutRedirectUri,
     session: {
         cookieSecret: process.env.cookieSecret,
         cookieLifetime: 60*60*8,

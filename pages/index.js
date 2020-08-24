@@ -16,7 +16,7 @@ function Home() {
   if(!user) {
     return <>
     <Header as="h1" textAlign='center'>
-      Welcome to Samjam
+      Welcome to Samjam!
     </Header>
     <Segment raised center>
       <Image src='https://res.cloudinary.com/aurix/image/upload/v1594299887/samjam-light_md6wsl.png' centered size='huge'/>

@@ -7,7 +7,7 @@ import Router from 'next/router'
 
 //TODO: find way to make user inactive without breaking the performance register
 
-function User({user}) {
+function User() {
 
     const {user, loading} = useFetchUser()
 

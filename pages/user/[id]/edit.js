@@ -7,7 +7,7 @@ import {useRouter} from 'next/router'
 import { useFetchUser } from '../../../utils/user'
 import Router from 'next/router'
 
-function EditUser({user}) {
+function EditUser() {
 
     const {user, loading} = useFetchUser()
 

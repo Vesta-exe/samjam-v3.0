@@ -1,6 +1,5 @@
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
-import UserList from '../components/Admin/UserList.js'
 import PositiveList from '../components/Admin/PositiveList'
 import NegativeList from '../components/Admin/NegativeList'
 import SickList from '../components/Admin/SickList'
@@ -11,7 +10,7 @@ import Link from 'next/link'
 import { useFetchUser } from '../utils/user'
 import Router from 'next/router'
 
-function Admin({users, positives, negatives, sicks, cashhandlings}) {
+function Admin({positives, negatives, sicks, cashhandlings}) {
 
     const {user, loading} = useFetchUser()
 
@@ -77,19 +76,16 @@ function Admin({users, positives, negatives, sicks, cashhandlings}) {
 }
 
 Admin.getInitialProps = async () => {
-    const users = await fetch(`${baseUrl}/api/users`)
     const positives = await fetch(`${baseUrl}/api/positive`)
     const negatives = await fetch(`${baseUrl}/api/negative`)
     const sicks = await fetch(`${baseUrl}/api/sick`)
     const cashhandlings = await fetch(`${baseUrl}/api/cashhandling`)
-    const {userData} = await users.json()
     const {positiveData} = await positives.json()
     const {negativeData} = await negatives.json()
     const {sickData} = await sicks.json()
     const {cashhandlingData} = await cashhandlings.json()
 
     return {
-        users: userData,
         negatives: negativeData,
         positives: positiveData,
         sicks: sickData,

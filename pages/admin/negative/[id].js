@@ -79,12 +79,6 @@ function Negative({negative}) {
 </>
 }
 
-Negative.getInitialProps = async ({query: {id}}) => {
-    const negative = await fetch(`${baseUrl}/api/negative/${id}`)
-    const {negativeData} = await negative.json()
-    return {negative: negativeData}
-}
-
 export async function getServerSideProps ({query: {id}}) {
     const negative = await fetch(`${baseUrl}/api/negative/${id}`)
     const {negativeData} = await negative.json()

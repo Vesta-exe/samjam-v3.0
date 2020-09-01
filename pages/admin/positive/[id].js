@@ -79,12 +79,6 @@ function Positive({positive}) {
 </>
 }
 
-Positive.getInitialProps = async ({query: {id}}) => {
-    const positive = await fetch(`${baseUrl}/api/positive/${id}`)
-    const {positiveData} = await positive.json()
-    return {positive: positiveData}
-}
-
 export async function getServerSideProps ({query: {id}}) {
     const positive = await fetch(`${baseUrl}/api/positive/${id}`)
     const {positiveData} = await positive.json()

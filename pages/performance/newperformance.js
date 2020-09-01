@@ -279,27 +279,6 @@ function NewPerformance({employees, positives, negatives, sicks, cashhandlings})
     )
 }
 
-NewPerformance.getInitialProps = async () => {
-    const employees = await fetch(`${baseUrl}/api/employees`)
-    const positives = await fetch(`${baseUrl}/api/positive`)
-    const negatives = await fetch(`${baseUrl}/api/negative`)
-    const sicks = await fetch(`${baseUrl}/api/sick`)
-    const cashhandlings = await fetch(`${baseUrl}/api/cashhandling`)
-    const {employeeData} = await employees.json()
-    const {positiveData} = await positives.json()
-    const {negativeData} = await negatives.json()
-    const {sickData} = await sicks.json()
-    const {cashhandlingData} = await cashhandlings.json()
-
-    return {
-        employees: employeeData,
-        positives: positiveData,
-        negatives: negativeData,
-        sicks: sickData,
-        cashhandlings: cashhandlingData
-    }
-}
-
 export async function getServerSideProps () {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const positives = await fetch(`${baseUrl}/api/positive`)

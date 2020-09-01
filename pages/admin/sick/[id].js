@@ -79,12 +79,6 @@ function Sick({sick}) {
 </>
 }
 
-Sick.getInitialProps = async ({query: {id}}) => {
-    const sick = await fetch(`${baseUrl}/api/sick/${id}`)
-    const {sickData} = await sick.json()
-    return {sick: sickData}
-}
-
 export async function getServerSideProps ({query: {id}}) {
     const sick = await fetch(`${baseUrl}/api/sick/${id}`)
     const {sickData} = await sick.json()

@@ -25,7 +25,7 @@ function Employees({employees}) {
     </>
 }
 
-Employees.getInitialProps = async () => {
+Employees.getServerSideProps = async () => {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 

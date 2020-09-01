@@ -79,7 +79,7 @@ function Cashhandling({cashhandling}) {
 </>
 }
 
-Cashhandling.getInitialProps = async ({query: {id}}) => {
+Cashhandling.getServerSideProps = async ({query: {id}}) => {
     const cashhandling = await fetch(`${baseUrl}/api/cashhandling/${id}`)
     const {cashhandlingData} = await cashhandling.json()
     return {cashhandling: cashhandlingData}

@@ -73,7 +73,7 @@ function Performance({performances}) {
     )
 }
 
-Performance.getInitialProps = async () => {
+Performance.getServerSideProps = async () => {
     const performance = await fetch(`${baseUrl}/api/performance`)
     const {performanceData} = await performance.json()
 

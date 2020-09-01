@@ -142,7 +142,7 @@ function Rsa({employee}) {
         )
 }
 
-Rsa.getInitialProps = async ({query: {id}}) => {
+Rsa.getServerSideProps = async ({query: {id}}) => {
     const employee = await fetch(`${baseUrl}/api/employees/${id}`)
     const {employeeData} = await employee.json()
 

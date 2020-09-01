@@ -75,7 +75,7 @@ function Admin({positives, negatives, sicks, cashhandlings}) {
     </>
 }
 
-Admin.getInitialProps = async () => {
+Admin.getServerSideProps = async () => {
     const positives = await fetch(`${baseUrl}/api/positive`)
     const negatives = await fetch(`${baseUrl}/api/negative`)
     const sicks = await fetch(`${baseUrl}/api/sick`)

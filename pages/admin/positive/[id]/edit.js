@@ -114,7 +114,7 @@ function EditPositive({positive}) {
     )
 }
 
-EditPositive.getInitialProps = async ({query: {id}}) => {
+EditPositive.getServerSideProps = async ({query: {id}}) => {
     const positive = await fetch(`${baseUrl}/api/positive/${id}`)
     const {positiveData} = await positive.json()
 

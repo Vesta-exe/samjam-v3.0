@@ -46,7 +46,7 @@ function Rsa({employees}) {
     )
 }
 
-Rsa.getInitialProps = async () => {
+Rsa.getServerSideProps = async () => {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 

@@ -112,7 +112,7 @@ function PerformanceNote({performance}) {
     </>
 }
 
-PerformanceNote.getInitialProps = async ({query: {id}}) => {
+PerformanceNote.getServerSideProps = async ({query: {id}}) => {
     const performance = await fetch(`${baseUrl}/api/performance/${id}`)
     const {performanceData} = await performance.json()
     return {performance: performanceData}

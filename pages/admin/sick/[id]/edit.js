@@ -113,7 +113,7 @@ function EditSick({sick}) {
     )
 }
 
-EditSick.getInitialProps = async ({query: {id}}) => {
+EditSick.getServerSideProps = async ({query: {id}}) => {
     const sick = await fetch(`${baseUrl}/api/sick/${id}`)
     const {sickData} = await sick.json()
 

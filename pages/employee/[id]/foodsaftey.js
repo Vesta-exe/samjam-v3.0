@@ -142,7 +142,7 @@ function Foodsaftey({employee}) {
         )
 }
 
-Foodsaftey.getInitialProps = async ({query: {id}}) => {
+Foodsaftey.getServerSideProps = async ({query: {id}}) => {
     const employee = await fetch(`${baseUrl}/api/employees/${id}`)
     const {employeeData} = await employee.json()
 

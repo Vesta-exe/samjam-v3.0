@@ -46,7 +46,7 @@ function Wwcc({employees}) {
     )
 }
 
-Wwcc.getInitialProps = async () => {
+Wwcc.getServerSideProps = async () => {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 

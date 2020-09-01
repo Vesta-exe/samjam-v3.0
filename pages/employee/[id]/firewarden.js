@@ -142,7 +142,7 @@ function Firewarden({employee}) {
         )
 }
 
-Firewarden.getInitialProps = async ({query: {id}}) => {
+Firewarden.getServerSideProps = async ({query: {id}}) => {
     const employee = await fetch(`${baseUrl}/api/employees/${id}`)
     const {employeeData} = await employee.json()
 

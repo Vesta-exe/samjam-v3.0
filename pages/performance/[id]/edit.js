@@ -306,7 +306,7 @@ function EditPerformance({performance, employees, positives, negatives, sicks, c
     )
 }
 
-EditPerformance.getInitialProps = async ({query: {id}}) => {
+EditPerformance.getServerSideProps = async ({query: {id}}) => {
     const performance = await fetch(`${baseUrl}/api/performance/${id}`)
     const employees = await fetch(`${baseUrl}/api/employees`)
     const positives = await fetch(`${baseUrl}/api/positive`)

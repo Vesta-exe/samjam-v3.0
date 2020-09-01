@@ -6,9 +6,11 @@ import Link from 'next/link'
 import { useFetchUser } from '../../../utils/user'
 import Router from 'next/router'
 
-function Positive({positive}) {
+function Positive({positiveData}) {
 
     const {user, loading} = useFetchUser()
+
+    const positive = positiveData
 
     if (!user && !loading) {
         Router.push('/')
@@ -82,7 +84,7 @@ function Positive({positive}) {
 export async function getServerSideProps ({query: {id}}) {
     const positive = await fetch(`${baseUrl}/api/positive/${id}`)
     const {positiveData} = await positive.json()
-    return {positive: positiveData}
+    return {props: {positiveData}}
 }
 
 export default Positive

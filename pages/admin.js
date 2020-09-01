@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { useFetchUser } from '../utils/user'
 import Router from 'next/router'
 
-function Admin({positives, negatives, sicks, cashhandlings}) {
+function Admin({positiveData, negativeData, sickData, cashhandlingData}) {
 
     const {user, loading} = useFetchUser()
 
@@ -19,16 +19,7 @@ function Admin({positives, negatives, sicks, cashhandlings}) {
     }
 
     return <>
-        {/* <UserList users={users}/>
-        <Link href='/newuser'>
-            <Button color="green" icon labelPosition="left">
-                <Icon name="pencil"/>
-                Create User
-            </Button>
-        </Link>
-        <br/>
-        <br/> */}
-        <PositiveList positives={positives}/>
+        <PositiveList positives={positiveData}/>
         <br/>
         <br/>
         <Link href='/admin/newpositive'>
@@ -39,7 +30,7 @@ function Admin({positives, negatives, sicks, cashhandlings}) {
         </Link>
         <br/>
         <br/>
-        <NegativeList negatives={negatives}/>
+        <NegativeList negatives={negativeData}/>
         <br/>
         <br/>
         <Link href='/admin/newnegative'>
@@ -50,7 +41,7 @@ function Admin({positives, negatives, sicks, cashhandlings}) {
         </Link>
         <br/>
         <br/>
-        <SickList sicks={sicks}/>
+        <SickList sicks={sickData}/>
         <br/>
         <br/>
         <Link href='/admin/newsick'>
@@ -61,7 +52,7 @@ function Admin({positives, negatives, sicks, cashhandlings}) {
         </Link>
         <br/>
         <br/>
-        <CashhandlingList cashhandlings={cashhandlings}/>
+        <CashhandlingList cashhandlings={cashhandlingData}/>
         <br/>
         <br/>
         <Link href='/admin/newcashhandling'>
@@ -86,10 +77,7 @@ export async function getServerSideProps () {
     const {cashhandlingData} = await cashhandlings.json()
 
     return {
-        negatives: negativeData,
-        positives: positiveData,
-        sicks: sickData,
-        cashhandlings: cashhandlingData
+        props: {negativeData, positiveData, sickData, cashhandlingData}
     }
 }
 

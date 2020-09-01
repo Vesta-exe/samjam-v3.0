@@ -7,7 +7,7 @@ import fetch from 'isomorphic-unfetch'
 import { useFetchUser } from '../utils/user'
 import Router from 'next/router'
 
-function Performance({performances}) {
+function Performance({performanceData}) {
 
     const {user, loading} = useFetchUser()
 
@@ -41,7 +41,7 @@ function Performance({performances}) {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {performances.map(performance => {
+                    {performanceData.map(performance => {
                         return (
                             <Table.Row key={performance.id}>
                                 <Table.Cell>{formatDate(performance.date)}</Table.Cell>
@@ -77,7 +77,7 @@ export async function getServerSideProps () {
     const performance = await fetch(`${baseUrl}/api/performance`)
     const {performanceData} = await performance.json()
 
-    return {performances: performanceData}
+    return {props: {performanceData}}
 }
 
 export default Performance

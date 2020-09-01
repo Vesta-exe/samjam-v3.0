@@ -8,9 +8,11 @@ import Link from 'next/link'
 import { useFetchUser } from '../../utils/user'
 import Router from 'next/router'
 
-function PerformanceNote({performance}) {
+function PerformanceNote({performanceData}) {
 
     const {user, loading} = useFetchUser()
+
+    const performance = performanceData
 
     if (!user && !loading) {
         Router.push('/')
@@ -115,7 +117,7 @@ function PerformanceNote({performance}) {
 export async function getServerSideProps ({query: {id}}) {
     const performance = await fetch(`${baseUrl}/api/performance/${id}`)
     const {performanceData} = await performance.json()
-    return {performance: performanceData}
+    return {props: {performanceData}}
 }
 
 export default PerformanceNote

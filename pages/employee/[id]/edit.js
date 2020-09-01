@@ -40,9 +40,11 @@ const areaOptions = [
     {key: 'No', text: 'No', value: 'No'}
 ]
 
-function EditEmployee({employee}) {
+function EditEmployee({employeeData}) {
 
     const {user, loading} = useFetchUser()
+
+    const employee = employeeData
 
     if (!user && !loading) {
         Router.push('/')
@@ -496,7 +498,7 @@ export async function getServerSideProps ({query: {id}}) {
     const employee = await fetch(`${baseUrl}/api/employees/${id}`)
     const {employeeData} = await employee.json()
 
-    return {employee: employeeData}
+    return {props: {employeeData}}
 }
 
 export default EditEmployee

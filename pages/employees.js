@@ -7,7 +7,7 @@ import Router from 'next/router'
 
 //TODO: Add Paginagtion in the future maybe?
 
-function Employees({employees}) {
+function Employees({employeeData}) {
     const {user, loading} = useFetchUser()
 
     if (loading) {
@@ -21,7 +21,7 @@ function Employees({employees}) {
     }
 
     return <>
-        <EmployeeList employees={employees}/>
+        <EmployeeList employees={employeeData}/>
     </>
 }
 
@@ -29,7 +29,10 @@ export async function getServerSideProps () {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 
-    return {employees: employeeData}
+    return {
+        props: {employeeData}
+    
+    }
 }
 
 export default Employees

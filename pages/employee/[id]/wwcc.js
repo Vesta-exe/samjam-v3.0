@@ -7,9 +7,11 @@ import {useRouter} from 'next/router'
 import { useFetchUser } from '../../../utils/user'
 import Router from 'next/router'
 
-function Wwcc({employee}) {
+function Wwcc({employeeData}) {
 
     const {user, loading} = useFetchUser()
+
+    const employee = employeeData
 
     if (!user && !loading) {
         Router.push('/')
@@ -146,7 +148,7 @@ export async function getServerSideProps ({query: {id}}) {
     const employee = await fetch(`${baseUrl}/api/employees/${id}`)
     const {employeeData} = await employee.json()
 
-    return {employee: employeeData}
+    return {props: {employeeData}}
 }
 
 export default Wwcc

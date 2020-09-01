@@ -7,9 +7,11 @@ import {useRouter} from 'next/router'
 import { useFetchUser } from '../../../../utils/user'
 import Router from 'next/router'
 
-function EditCashhandling({cashhandling}) {
+function EditCashhandling({cashhandlingData}) {
 
     const {user, loading} = useFetchUser()
+
+    const cashhandling = cashhandlingData
 
     if (!user && !loading) {
         Router.push('/')
@@ -117,7 +119,7 @@ export async function getServerSideProps ({query: {id}}) {
     const cashhandling = await fetch(`${baseUrl}/api/cashhandling/${id}`)
     const {cashhandlingData} = await cashhandling.json()
 
-    return {cashhandling: cashhandlingData}
+    return {props: {cashhandlingData}}
 }
 
 export default EditCashhandling

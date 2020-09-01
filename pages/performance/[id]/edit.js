@@ -14,7 +14,7 @@ const typeOptions = [
     {key: 'Cashhandling', text: 'Cash Handling', value: 'Cash Handling'},
 ]
 
-function EditPerformance({performance, employees, positives, negatives, sicks, cashhandlings}) {
+function EditPerformance({performanceData, employeeData, positiveData, negativeData, sickData, cashhandlingData}) {
 
     const {user, loading} = useFetchUser()
 
@@ -115,7 +115,7 @@ function EditPerformance({performance, employees, positives, negatives, sicks, c
         return err
     }
 
-    const employeeOptions = employees.map((employee) => {
+    const employeeOptions = employeeData.map((employee) => {
         return (
             {
                 key: employee.name,
@@ -125,7 +125,7 @@ function EditPerformance({performance, employees, positives, negatives, sicks, c
         )
     })
 
-    const positiveOptions = positives.map((positive) => {
+    const positiveOptions = positiveData.map((positive) => {
         return (
             {
                 key: positive.name,
@@ -135,7 +135,7 @@ function EditPerformance({performance, employees, positives, negatives, sicks, c
         )
     })
 
-    const negativeOptions = negatives.map((negative) => {
+    const negativeOptions = negativeData.map((negative) => {
         return (
             {
                 key: negative.name,
@@ -145,7 +145,7 @@ function EditPerformance({performance, employees, positives, negatives, sicks, c
         )
     })
 
-    const sickOptions = sicks.map((sick) => {
+    const sickOptions = sickData.map((sick) => {
         return (
             {
                 key: sick.name,
@@ -155,7 +155,7 @@ function EditPerformance({performance, employees, positives, negatives, sicks, c
         )
     })
 
-    const cashhandlingOptions = cashhandlings.map((cashhandling) => {
+    const cashhandlingOptions = cashhandlingData.map((cashhandling) => {
         return (
             {
                 key: cashhandling.name,
@@ -321,12 +321,7 @@ export async function getServerSideProps ({query: {id}}) {
     const {cashhandlingData} = await cashhandlings.json()
 
     return {
-        performance: performanceData,
-        employees: employeeData,
-        positives: positiveData,
-        negatives: negativeData,
-        sicks: sickData,
-        cashhandlings: cashhandlingData
+        props: {performanceData, employeeData, positiveData, negativeData, sickData, cashhandlingData}
     }
 }
 

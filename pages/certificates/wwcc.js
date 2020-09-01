@@ -30,7 +30,7 @@ function Wwcc({employees}) {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {employees.filter(employee => employee.wwcc !== '').map(filteredEmployee => {
+                    {employeeData.filter(employee => employee.wwcc !== '').map(filteredEmployee => {
                         return (
                             <Table.Row key={filteredEmployee.id}>
                                 <Table.Cell>{filteredEmployee.kronos}</Table.Cell>
@@ -50,7 +50,7 @@ export async function getServerSideProps () {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 
-    return {employees: employeeData}
+    return {props: {employeeData}}
 }
 
 export default Wwcc

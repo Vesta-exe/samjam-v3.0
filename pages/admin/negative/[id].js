@@ -6,9 +6,11 @@ import Link from 'next/link'
 import { useFetchUser } from '../../../utils/user'
 import Router from 'next/router'
 
-function Negative({negative}) {
+function Negative({negativeData}) {
 
     const {user, loading} = useFetchUser()
+
+    const negative = negativeData
 
     if (!user && !loading) {
         Router.push('/')
@@ -82,7 +84,7 @@ function Negative({negative}) {
 export async function getServerSideProps ({query: {id}}) {
     const negative = await fetch(`${baseUrl}/api/negative/${id}`)
     const {negativeData} = await negative.json()
-    return {negative: negativeData}
+    return {props: {negativeData}}
 }
 
 export default Negative

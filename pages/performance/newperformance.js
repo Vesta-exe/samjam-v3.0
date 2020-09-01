@@ -14,7 +14,7 @@ const typeOptions = [
     {key: 'Cashhandling', text: 'Cash Handling', value: 'Cash Handling'},
 ]
 
-function NewPerformance({employees, positives, negatives, sicks, cashhandlings}) {
+function NewPerformance({employeeData, positiveData, negativeData, sickData, cashhandlingData}) {
 
     const {user, loading} = useFetchUser()
 
@@ -113,7 +113,7 @@ function NewPerformance({employees, positives, negatives, sicks, cashhandlings})
         return err
     }
 
-    const employeeOptions = employees.map((employee) => {
+    const employeeOptions = employeeData.map((employee) => {
         return (
             {
                 key: employee.name,
@@ -123,7 +123,7 @@ function NewPerformance({employees, positives, negatives, sicks, cashhandlings})
         )
     })
 
-    const positiveOptions = positives.map((positive) => {
+    const positiveOptions = positiveData.map((positive) => {
         return (
             {
                 key: positive.name,
@@ -133,7 +133,7 @@ function NewPerformance({employees, positives, negatives, sicks, cashhandlings})
         )
     })
 
-    const negativeOptions = negatives.map((negative) => {
+    const negativeOptions = negativeData.map((negative) => {
         return (
             {
                 key: negative.name,
@@ -143,7 +143,7 @@ function NewPerformance({employees, positives, negatives, sicks, cashhandlings})
         )
     })
 
-    const sickOptions = sicks.map((sick) => {
+    const sickOptions = sickData.map((sick) => {
         return (
             {
                 key: sick.name,
@@ -153,7 +153,7 @@ function NewPerformance({employees, positives, negatives, sicks, cashhandlings})
         )
     })
 
-    const cashhandlingOptions = cashhandlings.map((cashhandling) => {
+    const cashhandlingOptions = cashhandlingData.map((cashhandling) => {
         return (
             {
                 key: cashhandling.name,
@@ -292,11 +292,7 @@ export async function getServerSideProps () {
     const {cashhandlingData} = await cashhandlings.json()
 
     return {
-        employees: employeeData,
-        positives: positiveData,
-        negatives: negativeData,
-        sicks: sickData,
-        cashhandlings: cashhandlingData
+        props: {employeeData, positiveData, negativeData, sickData, cashhandlingData}
     }
 }
 

@@ -4,7 +4,7 @@ import formatDate from '../../utils/formatDate'
 import { useFetchUser } from '../../utils/user'
 import Router from 'next/router'
 
-function Foodsaftey({employees}) {
+function Foodsaftey({employeeData}) {
 
     const {user, loading} = useFetchUser()
 
@@ -30,7 +30,7 @@ function Foodsaftey({employees}) {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {employees.filter(employee => employee.foodsaftey !== '').map(filteredEmployee => {
+                    {employeeData.filter(employee => employee.foodsaftey !== '').map(filteredEmployee => {
                         return (
                             <Table.Row key={filteredEmployee.id}>
                                 <Table.Cell>{filteredEmployee.kronos}</Table.Cell>
@@ -50,7 +50,7 @@ export async function getServerSideProps () {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 
-    return {employees: employeeData}
+    return {props: {employeeData}}
 }
 
 export default Foodsaftey

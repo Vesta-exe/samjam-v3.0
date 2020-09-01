@@ -6,9 +6,11 @@ import Link from 'next/link'
 import { useFetchUser } from '../../../utils/user'
 import Router from 'next/router'
 
-function Sick({sick}) {
+function Sick({sickData}) {
 
     const {user, loading} = useFetchUser()
+
+    const sick = sickData
 
     if (!user && !loading) {
         Router.push('/')
@@ -82,7 +84,7 @@ function Sick({sick}) {
 export async function getServerSideProps ({query: {id}}) {
     const sick = await fetch(`${baseUrl}/api/sick/${id}`)
     const {sickData} = await sick.json()
-    return {sick: sickData}
+    return {props: {sickData}}
 }
 
 export default Sick

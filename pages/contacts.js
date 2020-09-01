@@ -3,7 +3,7 @@ import baseUrl from '../utils/baseUrl'
 import { useFetchUser } from '../utils/user'
 import Router from 'next/router'
 
-function Contacts({employees}) {
+function Contacts({employeeData}) {
 
     const {user, loading} = useFetchUser()
 
@@ -41,7 +41,7 @@ function Contacts({employees}) {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {employees.map(employee => {
+                    {employeeData.map(employee => {
                         return (
                             <Table.Row key={employee.id}>
                                 <Table.Cell>{employee.name}</Table.Cell>
@@ -119,7 +119,7 @@ export async function getServerSideProps () {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 
-    return {employees: employeeData}
+    return {props: {employeeData}}
 }
 
 export default Contacts

@@ -11,7 +11,7 @@ import Router from 'next/router'
 //TODO: Add Performance Segment
 //TODO: Add Training Segment
 
-function Employee({employee, performances}) {
+function Employee({employeeData, performanceData}) {
 
     const {user, loading} = useFetchUser()
 
@@ -21,12 +21,12 @@ function Employee({employee, performances}) {
 
     return (
         <>
-            <EmployeeSummary employee = {employee}/>
-            <EmployeeCertificates employee = {employee}/>
+            <EmployeeSummary employee = {employeeData}/>
+            <EmployeeCertificates employee = {employeeData}/>
             <br/>
-            <EmployeeButtons employee = {employee}/>
+            <EmployeeButtons employee = {employeeData}/>
             <br/>
-            <EmployeeRegister employee = {employee} performances = {performances}/>
+            <EmployeeRegister employee = {employeeData} performances = {performanceData}/>
         </>
     )
 }
@@ -38,8 +38,7 @@ export async function getServerSideProps ({query: {id}}) {
     const {performanceData} = await performance.json()
 
     return {
-        employee: employeeData,
-        performances: performanceData
+        props: {employeeData, performanceData}
     }
 }
 

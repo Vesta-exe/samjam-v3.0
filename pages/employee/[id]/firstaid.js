@@ -142,7 +142,14 @@ function Firstaid({employee}) {
         )
 }
 
-Firstaid.getServerSideProps = async ({query: {id}}) => {
+Firstaid.getInitialProps = async ({query: {id}}) => {
+    const employee = await fetch(`${baseUrl}/api/employees/${id}`)
+    const {employeeData} = await employee.json()
+
+    return {employee: employeeData}
+}
+
+export async function getServerSideProps ({query: {id}}) {
     const employee = await fetch(`${baseUrl}/api/employees/${id}`)
     const {employeeData} = await employee.json()
 

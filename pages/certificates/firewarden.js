@@ -46,7 +46,14 @@ function Firewarden({employees}) {
     )
 }
 
-Firewarden.getServerSideProps = async () => {
+Firewarden.getInitialProps = async () => {
+    const employees = await fetch(`${baseUrl}/api/employees`)
+    const {employeeData} = await employees.json()
+
+    return {employees: employeeData}
+}
+
+export async function getServerSideProps () {
     const employees = await fetch(`${baseUrl}/api/employees`)
     const {employeeData} = await employees.json()
 

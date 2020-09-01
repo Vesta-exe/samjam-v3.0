@@ -31,7 +31,19 @@ function Employee({employee, performances}) {
     )
 }
 
-Employee.getServerSideProps = async ({query: {id}}) => {
+Employee.getInitialProps = async ({query: {id}}) => {
+    const employee = await fetch(`${baseUrl}/api/employees/${id}`)
+    const performance = await fetch(`${baseUrl}/api/performance`)
+    const {employeeData} = await employee.json()
+    const {performanceData} = await performance.json()
+
+    return {
+        employee: employeeData,
+        performances: performanceData
+    }
+}
+
+export async function getServerSideProps ({query: {id}}) {
     const employee = await fetch(`${baseUrl}/api/employees/${id}`)
     const performance = await fetch(`${baseUrl}/api/performance`)
     const {employeeData} = await employee.json()

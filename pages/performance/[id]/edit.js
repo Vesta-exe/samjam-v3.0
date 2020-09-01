@@ -306,7 +306,31 @@ function EditPerformance({performance, employees, positives, negatives, sicks, c
     )
 }
 
-EditPerformance.getServerSideProps = async ({query: {id}}) => {
+EditPerformance.getInitialProps = async ({query: {id}}) => {
+    const performance = await fetch(`${baseUrl}/api/performance/${id}`)
+    const employees = await fetch(`${baseUrl}/api/employees`)
+    const positives = await fetch(`${baseUrl}/api/positive`)
+    const negatives = await fetch(`${baseUrl}/api/negative`)
+    const sicks = await fetch(`${baseUrl}/api/sick`)
+    const cashhandlings = await fetch(`${baseUrl}/api/cashhandling`)
+    const {performanceData} = await performance.json()
+    const {employeeData} = await employees.json()
+    const {positiveData} = await positives.json()
+    const {negativeData} = await negatives.json()
+    const {sickData} = await sicks.json()
+    const {cashhandlingData} = await cashhandlings.json()
+
+    return {
+        performance: performanceData,
+        employees: employeeData,
+        positives: positiveData,
+        negatives: negativeData,
+        sicks: sickData,
+        cashhandlings: cashhandlingData
+    }
+}
+
+export async function getServerSideProps ({query: {id}}) {
     const performance = await fetch(`${baseUrl}/api/performance/${id}`)
     const employees = await fetch(`${baseUrl}/api/employees`)
     const positives = await fetch(`${baseUrl}/api/positive`)

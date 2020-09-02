@@ -18,6 +18,8 @@ function EditPerformance({performanceData, employeeData, positiveData, negativeD
 
     const {user, loading} = useFetchUser()
 
+    const performance = performanceData
+
     if (!user && !loading) {
         Router.push('/')
     }

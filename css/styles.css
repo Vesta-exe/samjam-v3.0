@@ -40,3 +40,6 @@ body {
   color: red !important;
 }
 
+.ui.text.container {
+  max-width: 400px !important;
+}

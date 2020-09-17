@@ -43,3 +43,30 @@ body {
 .ui.text.container {
   max-width: 400px !important;
 }
+
+.version {
+  color: white !important;
+  padding-left: 2rem;
+  position: absolute;
+  bottom: 1rem;
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 900px) {
+  .ui.huge.vertical.menu {
+    width: 10rem
+  }
+  .ui.text.container {
+    max-width: 10rem !important;
+  }
+  .ui.inverted.menu .item, .ui.inverted.menu .item > a:not(.ui) {
+    width: 10rem !important;
+  }
+  .ui.inverted.menu .active.item {
+    width: 10rem !important;
+  }
+  .container.wrapper {
+    padding-left: 5rem;
+  }
+
+}

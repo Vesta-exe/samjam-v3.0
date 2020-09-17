@@ -27,7 +27,7 @@ function Performance({performanceData}) {
                     Create New Performance Note
                 </Button>
             </Link>
-            <Table celled structured>
+            <Table celled structured fixed singleLine>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell rowSpan='2'>Date</Table.HeaderCell>
@@ -74,8 +74,8 @@ function Performance({performanceData}) {
 }
 
 export async function getServerSideProps () {
-    const performance = await fetch(`${baseUrl}/api/performance`)
-    const {performanceData} = await performance.json()
+    const performances = await fetch(`${baseUrl}/api/performance`)
+    const {performanceData} = await performances.json()
 
     return {props: {performanceData}}
 }

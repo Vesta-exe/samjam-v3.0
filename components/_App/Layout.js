@@ -15,7 +15,7 @@ function Layout({ children}) {
                     <title>Samjam</title>
                 </Head>
                 <Header user={user} />
-                <Container style={{ paddingTop: "1em"}}>
+                <Container className='wrapper' style={{ paddingTop: "1em"}}>
                     {children}
                 </Container>
         </UserProvider>

@@ -150,6 +150,10 @@ function Header() {
                     </Link>
                 ) : null}
 
+                <div className='version' >
+                    Version 1.2
+                </div>
+
             </Container>
         </Menu>
     )

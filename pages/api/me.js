@@ -1,4 +1,7 @@
 import auth0 from '../../utils/auth0'
+import connectDb from '../../utils/connectDb'
+
+connectDb()
 
 export default async function me(req, res) {
     try {

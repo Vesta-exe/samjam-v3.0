@@ -94,6 +94,14 @@ const EmployeeSchema = new mongoose.Schema ({
         type: String,
         default: 'No',
     },
+    CLN: {
+        type: String,
+        default: 'No',
+    },
+    OFFICE: {
+        type: String,
+        default: 'No',
+    },
     CBTL: {
         type: String,
         default: 'No',
@@ -115,6 +123,10 @@ const EmployeeSchema = new mongoose.Schema ({
         default: 'No',
     },
     VJRTL: {
+        type: String,
+        default: 'No',
+    },
+    CLNTL: {
         type: String,
         default: 'No',
     },

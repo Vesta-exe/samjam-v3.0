@@ -28,7 +28,7 @@ function Contacts({employeeData}) {
                         <Table.HeaderCell rowSpan='2'>Study</Table.HeaderCell>
                         <Table.HeaderCell rowSpan='2'>Emergency Contact</Table.HeaderCell>
                         <Table.HeaderCell rowSpan='2'>Emergency Number</Table.HeaderCell>
-                        <Table.HeaderCell colSpan='7'>Areas Trained</Table.HeaderCell>
+                        <Table.HeaderCell colSpan='8'>Areas Trained</Table.HeaderCell>
                     </Table.Row>
                     <Table.Row>
                         <Table.HeaderCell>CB</Table.HeaderCell>
@@ -36,7 +36,8 @@ function Contacts({employeeData}) {
                         <Table.HeaderCell>FLR</Table.HeaderCell>
                         <Table.HeaderCell>GC</Table.HeaderCell>
                         <Table.HeaderCell>INT</Table.HeaderCell>
-                        <Table.HeaderCell>VJR</Table.HeaderCell>
+                        <Table.HeaderCell>RJR</Table.HeaderCell>
+                        <Table.HeaderCell>CLN</Table.HeaderCell>
                         <Table.HeaderCell>RSA</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
@@ -96,6 +97,14 @@ function Contacts({employeeData}) {
                                     </Table.Cell>
                                 }
                                 {employee.VJR !== 'Yes' &&
+                                    <Table.Cell></Table.Cell>
+                                }
+                                {employee.CLN === 'Yes' &&
+                                    <Table.Cell textAlign="center">
+                                        <Icon color="green" name='checkmark'/>
+                                    </Table.Cell>
+                                }
+                                {employee.CLN !== 'Yes' &&
                                     <Table.Cell></Table.Cell>
                                 }
                                 {employee.rsa !== '' &&

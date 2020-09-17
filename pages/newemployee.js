@@ -237,6 +237,8 @@ function NewEmployee() {
                                 placeholder= "Suburb"
                                 onChange={handleChange}
                             />
+                        </Form.Group>
+                        <Form.Group widths="equal">
                             <Form.Field
                                 control={Select}
                                 error={errors.state ? {content: 'Please select a state', pointing: 'below'} : null}
@@ -301,6 +303,8 @@ function NewEmployee() {
                                 placeholder="Employment"
                                 onChange={handleSelectChange}
                             />
+                        </Form.Group>
+                        <Form.Group widths="equal">
                             <Form.Field
                                 control={Input}
                                 name="kronos"
@@ -362,13 +366,31 @@ function NewEmployee() {
                             />
                             <Form.Field
                                 control={Select}
-                                label="VJunior"
+                                label="Regent Junior"
                                 name="VJR"
                                 options={areaOptions}
                                 placeholder="Select"
                                 onChange={handleSelectChange}
                             />
                         </Form.Group>
+                        <Form.Group widths="equal">
+                            <Form.Field
+                                    control={Select}
+                                    label="Cleaner"
+                                    name="CLN"
+                                    options={areaOptions}
+                                    placeholder="Select"
+                                    onChange={handleSelectChange}
+                                />
+                                <Form.Field
+                                    control={Select}
+                                    label="Office"
+                                    name="OFFICE"
+                                    options={areaOptions}
+                                    placeholder="Select"
+                                    onChange={handleSelectChange}
+                                />
+                            </Form.Group>
                         <Form.Field
                             floated="right"
                             control={Button}

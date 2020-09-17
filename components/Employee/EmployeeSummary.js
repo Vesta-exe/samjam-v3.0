@@ -8,12 +8,15 @@ function EmployeeSummary({ employee}) {
     const isFLR = employee.FLR === 'Yes'
     const isINT = employee.INT === 'Yes'
     const isVJR = employee.VJR === 'Yes'
+    const isCLN = employee.CLN === 'Yes'
+    const isOFFICE = employee.OFFICE === 'Yes'
     const isCBTL = employee.CBTL === 'Yes'
     const isTOTL = employee.TOTL === 'Yes'
     const isGCMOD = employee.GCMOD === 'Yes'
     const isFLRTL = employee.FLRTL === 'Yes'
     const isINTTL = employee.INTTL === 'Yes'
     const isVJRTL = employee.VJRTL === 'Yes'
+    const isCLNTL = employee.CLNTL === 'Yes'
     const isMOD = employee.MOD === 'Yes'
     const isNone = employee.study === 'None'
     const isYear10 = employee.study === 'Year 10'
@@ -64,10 +67,19 @@ function EmployeeSummary({ employee}) {
                             <Label circular color="red">INT</Label>
                         }
                         {isVJR && isVJRTL && !isMOD &&
-                            <Label circular color="orange">VJR TL</Label>
+                            <Label circular color="orange">RJR TL</Label>
                         }
                         {isVJR && !isVJRTL && !isMOD &&
-                            <Label circular color="orange">VJR</Label>
+                            <Label circular color="orange">RJR</Label>
+                        }
+                        {isCLN && isCLNTL && !isMOD &&
+                            <Label circular color="purple">CLN TL</Label>
+                        }
+                        {isCLN && !isCLNTL && !isMOD &&
+                            <Label circular color="purple">CLN</Label>
+                        }
+                        {isOFFICE && !isMOD &&
+                            <Label circular color="violet">OFFICE</Label>
                         }
                         <br/>
                         <br/>
@@ -92,6 +104,8 @@ function EmployeeSummary({ employee}) {
                         <br/>
                         <br/>
                         <Label size="huge" color="blue"> KRONOS: {employee.kronos} </Label>
+                        <br/>
+                        <br/>
                         <Label size="huge" color="teal"> POS: {employee.pos} </Label>
                         <br/>
                         <br/>

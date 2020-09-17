@@ -72,12 +72,15 @@ function EditEmployee({employeeData}) {
         FLR: employee.FLR,
         INT: employee.INT,
         VJR: employee.VJR,
+        CLN: employee.CLN,
+        OFFICE: employee.OFFICE,
         CBTL: employee.CBTL,
         TOTL: employee.TOTL,
         GCMOD: employee.GCMOD,
         FLRTL: employee.FLRTL,
         INTTL: employee.INTTL,
         VJRTL: employee.VJRTL,
+        CLNTL: employee.CLNTL,
         MOD: employee.MOD
     })
     const [isSubmitting, setIsSubmiting] = React.useState(false)
@@ -256,6 +259,8 @@ function EditEmployee({employeeData}) {
                                 value={form.suburb}
                                 onChange={handleChange}
                             />
+                        </Form.Group>
+                        <Form.Group widths="equal">
                             <Form.Field
                                 control={Select}
                                 error={errors.state ? {content: 'Please select a state', pointing: 'below'} : null}
@@ -327,6 +332,8 @@ function EditEmployee({employeeData}) {
                                 value={form.study}
                                 onChange={handleSelectChange}
                             />
+                        </Form.Group>
+                        <Form.Group widths="equal">
                             <Form.Field
                                 control={Input}
                                 name="kronos"
@@ -395,11 +402,31 @@ function EditEmployee({employeeData}) {
                             />
                             <Form.Field
                                 control={Select}
-                                label="VJunior"
+                                label="Regent Junior"
                                 name="VJR"
                                 options={areaOptions}
                                 placeholder="Select"
                                 value={form.VJR}
+                                onChange={handleSelectChange}
+                            />
+                        </Form.Group>
+                        <Form.Group widths="equal">
+                            <Form.Field
+                                control={Select}
+                                label="Cleaner"
+                                name="CLN"
+                                options={areaOptions}
+                                placeholder="Select"
+                                value={form.CLN}
+                                onChange={handleSelectChange}
+                            />
+                            <Form.Field
+                                control={Select}
+                                label="Office"
+                                name="OFFICE"
+                                options={areaOptions}
+                                placeholder="Select"
+                                value={form.OFFICE}
                                 onChange={handleSelectChange}
                             />
                         </Form.Group>
@@ -454,14 +481,24 @@ function EditEmployee({employeeData}) {
                             />
                             <Form.Field
                                 control={Select}
-                                label="VJunior"
+                                label="Regent Junior"
                                 name="VJRTL"
                                 options={areaOptions}
                                 placeholder="Select"
                                 value={form.VJRTL}
                                 onChange={handleSelectChange}
                             />
+                        </Form.Group>
                         <Form.Group widths="equal">
+                            <Form.Field
+                                control={Select}
+                                label="Cleaner"
+                                name="CLNTL"
+                                options={areaOptions}
+                                placeholder="Select"
+                                value={form.CLNTL}
+                                onChange={handleSelectChange}
+                            />
                             <Form.Field
                                 control={Select}
                                 label="MOD"
@@ -471,7 +508,6 @@ function EditEmployee({employeeData}) {
                                 value={form.MOD}
                                 onChange={handleSelectChange}
                             />
-                        </Form.Group>
                         </Form.Group>
                         <Link href={`/employee/${employee._id}`}>
                             <Button color="red" icon labelPosition="left" floated="right">

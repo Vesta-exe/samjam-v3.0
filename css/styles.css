@@ -52,7 +52,7 @@ body {
   font-size: 12px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1440px) {
   .ui.huge.vertical.menu {
     width: 10rem
   }
@@ -67,6 +67,10 @@ body {
   }
   .container.wrapper {
     padding-left: 5rem;
+  }
+  .cell {
+    overflow: hidden !important;
+    height: 25px !important;
   }
 
 }

@@ -27,7 +27,7 @@ function Performance({performanceData}) {
                     Create New Performance Note
                 </Button>
             </Link>
-            <Table celled structured fixed singleLine>
+            <Table celled structured>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell rowSpan='2'>Date</Table.HeaderCell>
@@ -43,7 +43,7 @@ function Performance({performanceData}) {
                 <Table.Body>
                     {performanceData.map(performance => {
                         return (
-                            <Table.Row key={performance.id}>
+                            <Table.Row key={performance.id} className="cell">
                                 <Table.Cell>{formatDate(performance.date)}</Table.Cell>
                                 <Table.Cell>{performance.manager}</Table.Cell>
                                 <Table.Cell>{performance.employee.name}</Table.Cell>

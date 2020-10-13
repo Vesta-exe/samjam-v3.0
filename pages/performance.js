@@ -7,8 +7,6 @@ import {Table, Header, Icon, Button} from 'semantic-ui-react'
 import Link from 'next/link'
 import formatDate from '../utils/formatDate'
 
-//TODO: Add Paginagtion in the future maybe?
-
 function Performance({performanceData}) {
     const {user, loading} = useFetchUser()
 

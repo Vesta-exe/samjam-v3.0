@@ -188,6 +188,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                 name="employee"
                                 label="Employee"
                                 placeholder="Employee"
+                                search
                                 options={employeeOptions}
                                 onChange={handleSelectChange}
                             />
@@ -204,6 +205,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                 control={Select}
                                 label="Type"
                                 name="type"
+                                search
                                 options={typeOptions}
                                 placeholder="Type"
                                 onChange={handleSelectChange}
@@ -213,6 +215,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                     control={Select}
                                     label="Incident"
                                     name="incident"
+                                    search
                                     options={positiveOptions}
                                     placeholder="Incident"
                                     onChange={handleSelectChange}
@@ -223,6 +226,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                     control={Select}
                                     label="Incident"
                                     name="incident"
+                                    search
                                     options={negativeOptions}
                                     placeholder="Incident"
                                     onChange={handleSelectChange}
@@ -233,6 +237,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                     control={Select}
                                     label="Incident"
                                     name="incident"
+                                    search
                                     options={sickOptions}
                                     placeholder="Incident"
                                     onChange={handleSelectChange}
@@ -243,6 +248,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                     control={Select}
                                     label="Incident"
                                     name="incident"
+                                    search
                                     options={cashhandlingOptions}
                                     placeholder="Incident"
                                     onChange={handleSelectChange}

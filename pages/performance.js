@@ -1,15 +1,22 @@
 import React from 'react'
-import {Table, Header, Icon, Button} from 'semantic-ui-react'
-import Link from 'next/link'
-import baseUrl from '../utils/baseUrl'
-import formatDate from '../utils/formatDate'
 import fetch from 'isomorphic-unfetch'
+import baseUrl from '../utils/baseUrl'
 import { useFetchUser } from '../utils/user'
 import Router from 'next/router'
+import {Table, Header, Icon, Button} from 'semantic-ui-react'
+import Link from 'next/link'
+import formatDate from '../utils/formatDate'
+
+//TODO: Add Paginagtion in the future maybe?
 
 function Performance({performanceData}) {
-
     const {user, loading} = useFetchUser()
+
+    if (loading) {
+        return (
+            <p>Loading...</p>
+        )
+    }
 
     if (!user && !loading) {
         Router.push('/')
@@ -77,7 +84,9 @@ export async function getServerSideProps () {
     const performances = await fetch(`${baseUrl}/api/performance`)
     const {performanceData} = await performances.json()
 
-    return {props: {performanceData}}
+    return {
+        props: JSON.parse(JSON.stringify({performanceData}))
+    }
 }
 
 export default Performance

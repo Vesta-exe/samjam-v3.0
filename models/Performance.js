@@ -30,11 +30,11 @@ const PerformanceSchema = new mongoose.Schema ({
     },
     followupManager: {
         type: String,
-        default: ''
+        default: ""
     },
     followupDescription: {
         type: String,
-        default: ''
+        default: ""
     },
 },{
     timestamps: true

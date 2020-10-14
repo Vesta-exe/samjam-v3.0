@@ -263,7 +263,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                 onChange={handleChange}
                             />
                             <Link href='/performance'>
-                                <Button color="red" icon labelPosition="left" floated="right">
+                                <Button color="red" icon labelPosition="left" floated="right" aria-label="Cancel">
                                     <Icon name="cancel"/>
                                     Cancel
                                 </Button>
@@ -277,6 +277,7 @@ function NewPerformance({employeeData, positiveData, negativeData, sickData, cas
                                 icon="pencil alternate"
                                 content="Submit"
                                 type="submit"
+                                aria-label="Submit"
                             />
                         </Form>
             }

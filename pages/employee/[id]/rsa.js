@@ -123,7 +123,7 @@ function Rsa({employeeData}) {
                             onChange={handleChange}
                         />
                         <Link href={`/employee/${employee._id}`}>
-                            <Button color="red" icon labelPosition="left" floated="right">
+                            <Button color="red" icon labelPosition="left" floated="right" aria-label="Cancel">
                                 <Icon name="cancel"/>
                                 Cancel
                             </Button>
@@ -137,6 +137,7 @@ function Rsa({employeeData}) {
                             icon="pencil alternate"
                             content="Submit"
                             type="submit"
+                            aria-label="Submit"
                         />
                     </Form>
                 }

@@ -32,14 +32,14 @@ function PositiveList({positives}) {
                                 <Table.Cell>{positive.name}</Table.Cell>
                                 <Table.Cell>
                                     <Link href={`/admin/positive/${positive._id}`}>
-                                        <Button icon color="green">
+                                        <Button icon color="green" aria-label="view">
                                             <Icon name="eye"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>
                                 <Table.Cell>
                                     <Link href={`/admin/positive/${positive._id}/edit`}>
-                                        <Button icon color="blue">
+                                        <Button icon color="blue" aria-label="edit">
                                             <Icon name="edit"/>
                                         </Button>
                                     </Link>

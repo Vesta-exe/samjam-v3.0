@@ -22,7 +22,7 @@ function Home() {
       <Image src='https://res.cloudinary.com/aurix/image/upload/v1594299887/samjam-light_md6wsl.png' centered size='huge'/>
       <br/>
         <Link href='api/login'>
-          <Button icon color="blue" size='massive' circular fluid>
+          <Button icon color="blue" size='massive' circular fluid aria-label="login">
               Login
           </Button>
         </Link>

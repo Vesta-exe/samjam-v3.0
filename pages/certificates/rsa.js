@@ -30,7 +30,8 @@ function Rsa({employeeData}) {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {employeeData.filter(employee => employee.rsa !== '').map(filteredEmployee => {
+                    {employeeData.filter(employee => employee.rsa !== '')
+                    .map(filteredEmployee => {
                         return (
                             <Table.Row key={filteredEmployee.id}>
                                 <Table.Cell>{filteredEmployee.kronos}</Table.Cell>

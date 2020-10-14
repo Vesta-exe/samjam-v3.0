@@ -95,12 +95,12 @@ function PerformanceNote({performanceData}) {
                         </Item>
                     </Item.Group>
                     <Link href="/performance">
-                        <Button color="blue" icon labelPosition="left">
+                        <Button color="blue" icon labelPosition="left" aria-label="Back">
                             <Icon name="arrow left"/>
                             Back
                         </Button>
                     </Link>
-                    <Button color="red" onClick={open} icon labelPosition="left">
+                    <Button color="red" onClick={open} icon labelPosition="left" aria-label="Delete">
                         <Icon name="trash"/>
                         Delete
                     </Button>

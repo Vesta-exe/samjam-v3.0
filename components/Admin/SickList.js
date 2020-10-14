@@ -26,14 +26,14 @@ function SickList({sicks}) {
                                 <Table.Cell>{sick.name}</Table.Cell>
                                 <Table.Cell>
                                     <Link href={`/admin/sick/${sick._id}`}>
-                                        <Button icon color="green">
+                                        <Button icon color="green" aria-label="view">
                                             <Icon name="eye"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>
                                 <Table.Cell>
                                     <Link href={`/admin/sick/${sick._id}/edit`}>
-                                        <Button icon color="blue">
+                                        <Button icon color="blue" aria-label="edit">
                                             <Icon name="edit"/>
                                         </Button>
                                     </Link>

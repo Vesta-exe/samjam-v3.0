@@ -22,8 +22,8 @@ function Admin({positiveData, negativeData, sickData, cashhandlingData}) {
         <PositiveList positives={positiveData}/>
         <br/>
         <br/>
-        <Link href='/admin/newpositive'>
-            <Button color="green" icon labelPosition="left">
+        <Link href='/admin/newpositive' rel="preload">
+            <Button color="green" icon labelPosition="left" aria-label="add positive incident">
                 <Icon name="pencil"/>
                 Add Positive Incident
             </Button>
@@ -33,8 +33,8 @@ function Admin({positiveData, negativeData, sickData, cashhandlingData}) {
         <NegativeList negatives={negativeData}/>
         <br/>
         <br/>
-        <Link href='/admin/newnegative'>
-            <Button color="green" icon labelPosition="left">
+        <Link href='/admin/newnegative' rel="preload">
+            <Button color="green" icon labelPosition="left" aria-label="add negative incident">
                 <Icon name="pencil"/>
                 Add Negative Incident
             </Button>
@@ -44,8 +44,8 @@ function Admin({positiveData, negativeData, sickData, cashhandlingData}) {
         <SickList sicks={sickData}/>
         <br/>
         <br/>
-        <Link href='/admin/newsick'>
-            <Button color="green" icon labelPosition="left">
+        <Link href='/admin/newsick' rel="preload">
+            <Button color="green" icon labelPosition="left" aria-label="add sick incident">
                 <Icon name="pencil"/>
                 Add Sick Incident
             </Button>
@@ -55,8 +55,8 @@ function Admin({positiveData, negativeData, sickData, cashhandlingData}) {
         <CashhandlingList cashhandlings={cashhandlingData}/>
         <br/>
         <br/>
-        <Link href='/admin/newcashhandling'>
-            <Button color="green" icon labelPosition="left">
+        <Link href='/admin/newcashhandling' rel="preload">
+            <Button color="green" icon labelPosition="left" aria-label="add cash handling incident">
                 <Icon name="pencil"/>
                 Add Cash Handling Incident
             </Button>

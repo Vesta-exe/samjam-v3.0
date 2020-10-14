@@ -123,7 +123,7 @@ function Firewarden({employeeData}) {
                             onChange={handleChange}
                         />
                         <Link href={`/employee/${employee._id}`}>
-                            <Button color="red" icon labelPosition="left" floated="right">
+                            <Button color="red" icon labelPosition="left" floated="right" aria-label="Cancel">
                                 <Icon name="cancel"/>
                                 Cancel
                             </Button>
@@ -135,6 +135,7 @@ function Firewarden({employeeData}) {
                             control={Button}
                             color="green"
                             icon="pencil alternate"
+                            aria-label="Submit"
                             content="Submit"
                             type="submit"
                         />

@@ -26,8 +26,8 @@ function Performance({performanceData}) {
                 <Icon name="chart area" color="violet"/>
                 Performance Register
             </Header>
-            <Link href='/performance/newperformance'>
-                <Button icon color="green" labelPosition="left" fluid>
+            <Link href='/performance/newperformance' rel="prelaod">
+                <Button className="newp" icon color="green" labelPosition="left" fluid aria-label="Create New Performance Note">
                     <Icon name="add"/>
                     Create New Performance Note
                 </Button>
@@ -56,15 +56,15 @@ function Performance({performanceData}) {
                                 <Table.Cell>{performance.incident}</Table.Cell>
                                 <Table.Cell>{performance.description}</Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/performance/${performance._id}`}>
-                                        <Button icon color="green">
+                                    <Link href={`/performance/${performance._id}`} rel="preload">
+                                        <Button icon color="green" aria-label="view">
                                             <Icon name="eye"/>
                                         </Button>
                                     </Link>
                                 </Table.Cell>
                                 <Table.Cell>
-                                    <Link href={`/performance/${performance._id}/edit`}>
-                                        <Button icon color="blue">
+                                    <Link href={`/performance/${performance._id}/edit`} rel="preload">
+                                        <Button icon color="blue" aria-label="edit">
                                             <Icon name="edit"/>
                                         </Button>
                                     </Link>

@@ -32,7 +32,7 @@ function Header() {
                         Samjam
                     </Menu.Item>
                 {user && !loading ? (
-                    <Link href="/">
+                    <Link href="/" rel="preload">
                         <Menu.Item header active={isActive("/")}>
                         <Icon
                                 as="i"
@@ -45,7 +45,7 @@ function Header() {
                 ) : null}
 
                 {user && !loading ? (
-                    <Link href="/employees">
+                    <Link href="/employees" rel="preload">
                         <Menu.Item header active={isActive("/employees")}>
                         <Icon
                                 as="i"
@@ -58,7 +58,7 @@ function Header() {
                 ) : null}
 
                 {user && !loading ? (
-                    <Link href="/newemployee">
+                    <Link href="/newemployee" rel="preload">
                         <Menu.Item header active={isActive("/newemployee")}>
                         <Icon
                                 as="i"
@@ -71,7 +71,7 @@ function Header() {
                 ) : null}
 
                 {user && !loading ? (
-                    <Link href="/performance">
+                    <Link href="/performance" rel="preload">
                         <Menu.Item header active={isActive("/performance")}>
                             <Icon
                                 name="chart area"
@@ -83,7 +83,7 @@ function Header() {
                 ) : null}
 
                 {user && !loading ? (
-                    <Link href="/contacts">
+                    <Link href="/contacts" rel="preload">
                         <Menu.Item header active={isActive("/contacts")}>
                             <Icon
                                 name="address book"
@@ -95,7 +95,7 @@ function Header() {
                 ) : null}
 
                 {user && !loading ? (
-                    <Link href="/certificates">
+                    <Link href="/certificates" rel="preload">
                         <Menu.Item header active={isActive("/certificates")}>
                             <Icon
                                 name="certificate"
@@ -127,7 +127,7 @@ function Header() {
                 </Link> */}
 
                 {user && !loading ? (
-                    <Link href="/admin">
+                    <Link href="/admin" rel="preload">
                         <Menu.Item header active={isActive("/admin")}>
                             <Icon
                                 name="cogs"
@@ -139,7 +139,7 @@ function Header() {
                 ): null}
 
                 {user && !loading ? (
-                    <Link href="/api/logout">
+                    <Link href="/api/logout" rel="preload">
                         <Menu.Item header key="/api/logout">
                             <Icon
                                 name="sign out"
@@ -151,7 +151,7 @@ function Header() {
                 ) : null}
 
                 <div className='version' >
-                    Version 1.4
+                    Version 1.4.2
                 </div>
 
             </Container>

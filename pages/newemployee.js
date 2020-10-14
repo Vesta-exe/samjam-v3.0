@@ -398,6 +398,7 @@ function NewEmployee() {
                             icon="pencil alternate"
                             content="Submit"
                             type="submit"
+                            aria-label="Submit"
                         />
                         </Form>
             }

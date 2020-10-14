@@ -20,6 +20,7 @@ function Certificates() {
                     textalign="center"
                     size="massive"
                     color="blue"
+                    aria-label="RSA"
                 >
                 <Icon name="glass martini"/>
                 RSA
@@ -32,6 +33,7 @@ function Certificates() {
                     textalign="center"
                     size="massive"
                     color="green"
+                    aria-label="First Aid"
                 >
                 <Icon name="medkit"/>
                 First Aid
@@ -44,6 +46,7 @@ function Certificates() {
                     textalign="center"
                     size="massive"
                     color="red"
+                    aria-label="Fire Warden"
                 >
                 <Icon name="fire extinguisher"/>
                 Fire Warden
@@ -56,6 +59,7 @@ function Certificates() {
                     textalign="center"
                     size="massive"
                     color="yellow"
+                    aria-label="Food Saftey"
                 >
                 <Icon name="utensils"/>
                 Food Saftey
@@ -68,6 +72,7 @@ function Certificates() {
                     textalign="center"
                     size="massive"
                     color="teal"
+                    aria-label="WWCC"
                 >
                 <Icon name="child"/>
                 WWCC

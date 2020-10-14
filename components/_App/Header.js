@@ -28,6 +28,7 @@ function Header() {
                             floated="left"
                             src="https://res.cloudinary.com/aurix/image/upload/v1594299887/samjam-dark_zhmt4w.png"
                             style={{marginRight: '1em'}}
+                            alt="Logo"
                         />
                         Samjam
                     </Menu.Item>
@@ -151,7 +152,7 @@ function Header() {
                 ) : null}
 
                 <div className='version' >
-                    Version 1.4.2
+                    Version 1.4.3
                 </div>
 
             </Container>

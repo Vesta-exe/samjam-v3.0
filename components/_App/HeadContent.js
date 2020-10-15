@@ -16,6 +16,13 @@ export default () => (
         sizes="32x32"
         href="/samjam-dark.png"
       />
+      <link
+        rel="icon"
+        rel="preload"
+        type="image/ico"
+        sizes="16x16"
+        href="/samjam.ico"
+      />
     </>
   );
   

@@ -1,6 +1,7 @@
 import {Button, Icon, Image, Segment, Header} from 'semantic-ui-react'
 import Link from 'next/link'
 import { useFetchUser } from '../utils/user'
+import Dashboard from '../components/Dashboard/Dashboard'
 import Router from 'next/router'
 
 function Home() {
@@ -8,9 +9,10 @@ function Home() {
   const {user, loading} = useFetchUser()
 
   if (user) {
-    return (
+    return <>
       <h1>Welcome Back {user.name}</h1>
-    )
+      <Dashboard/>
+    </>
   }
 
   if(!user) {

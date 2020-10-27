@@ -152,7 +152,7 @@ function Header() {
                 ) : null}
 
                 <div className='version' >
-                    Version 1.5.0
+                    Version 1.5.1
                 </div>
 
             </Container>

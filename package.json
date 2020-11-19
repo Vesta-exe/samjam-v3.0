@@ -18,6 +18,7 @@
     "object-path": "0.11.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-to-print": "^2.11.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1"
   }

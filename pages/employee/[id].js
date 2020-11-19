@@ -8,12 +8,22 @@ import baseUrl from '../../utils/baseUrl'
 import { useFetchUser } from '../../utils/user'
 import Router from 'next/router'
 
+//for printing
+import {useRef} from 'react'
+import {useReactToPrint} from 'react-to-print'
+import {Button} from 'semantic-ui-react'
+
 //TODO: Add Performance Segment
 //TODO: Add Training Segment
 
 function Employee({employeeData, performanceData}) {
 
     const {user, loading} = useFetchUser()
+
+    const componentRef = useRef()
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current
+    })
 
     if (!user && !loading) {
         Router.push('/')
@@ -26,7 +36,11 @@ function Employee({employeeData, performanceData}) {
             <br/>
             <EmployeeButtons employee = {employeeData}/>
             <br/>
-            <EmployeeRegister employee = {employeeData} performances = {performanceData}/>
+            <br/>
+            <Button color="blue" floated='right' onClick={handlePrint}>Print</Button>
+            <div ref={componentRef}>
+                <EmployeeRegister employee = {employeeData} performances = {performanceData}/>
+            </div>
         </>
     )
 }

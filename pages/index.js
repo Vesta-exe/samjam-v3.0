@@ -21,7 +21,7 @@ function Home() {
       Welcome to Samjam!
     </Header>
     <Segment raised center>
-      <Image src='https://res.cloudinary.com/aurix/image/upload/v1602761835/Samjam_logo_light_lvk9jc.svg' centered size='huge'/>
+      <Image src='https://res.cloudinary.com/aurix/image/upload/v1602761835/Samjam_logo_light_lvk9jc.svg' centered size='large'/>
       <br/>
         <Link href='api/login'>
           <Button icon color="blue" size='massive' circular fluid aria-label="login">

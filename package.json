@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^0.16.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "bl": "2.2.1",
     "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.9.25",

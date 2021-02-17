@@ -8,7 +8,7 @@ function Dashboard() {
           <Grid.Column>
             <Segment raised textAlign="center" color="blue">
               <h2>Current Safe Code</h2>
-              <h2>567809</h2>
+              <h2>123456</h2>
             </Segment>
           </Grid.Column>
           <Grid.Column>
@@ -58,6 +58,12 @@ function Dashboard() {
             <Segment raised textAlign="center" color="blue">
               <h2>TO Door Code</h2>
               <h2>982E</h2>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment raised textAlign="center" color="blue">
+              <h2>IT Critial Number</h2>
+              <h2>(03) 9281 1012</h2>
             </Segment>
           </Grid.Column>
         </Grid.Row>

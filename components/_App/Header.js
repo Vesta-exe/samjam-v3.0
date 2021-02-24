@@ -1,113 +1,113 @@
-import {Menu, Container, Image, Icon} from 'semantic-ui-react'
-import Link from 'next/link'
-import Router, {useRouter} from 'next/router'
-import NProgress from 'nprogress'
-import { useFetchUser } from '../../utils/user'
+import { Menu, Container, Image, Icon } from "semantic-ui-react";
+import Link from "next/link";
+import Router, { useRouter } from "next/router";
+import NProgress from "nprogress";
+import { useFetchUser } from "../../utils/user";
 //import {handleLogout} from '../../utils/auth'
 
-Router.onRouteChangeStart = () => NProgress.start()
-Router.onRouteChangeComplete = () => NProgress.done()
-Router.onRouteChangeError = () => NProgress.done()
+Router.onRouteChangeStart = () => NProgress.start();
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 function Header() {
-    //TODO: Training & User Guides
-    const router = useRouter()
-    //const isAdmin = user && user.admin === 'admin'
-    const {user, loading} = useFetchUser()
+  //TODO: Training & User Guides
+  const router = useRouter();
+  //const isAdmin = user && user.admin === 'admin'
+  const { user, loading } = useFetchUser();
 
-    function isActive(route) {
-        return route === router.pathname
-    }
+  function isActive(route) {
+    return route === router.pathname;
+  }
 
-    return (
-        <Menu vertical id="menu" inverted fixed="left" size="huge">
-            <Container text>
-                    <Menu.Item header>
-                        <Image
-                            size="mini"
-                            floated="left"
-                            src="https://res.cloudinary.com/aurix/image/upload/v1594299887/samjam-dark_zhmt4w.png"
-                            style={{marginRight: '1em'}}
-                            alt="Logo"
-                        />
-                        Samjam
-                    </Menu.Item>
-                {user && !loading ? (
-                    <Link href="/" rel="preload">
-                        <Menu.Item header active={isActive("/")}>
-                        <Icon
-                                as="i"
-                                name="dashboard"
-                                size="large"
-                            />
-                            Dashboard
-                        </Menu.Item>
-                    </Link>
-                ) : null}
+  return (
+    <Menu vertical id="menu" inverted fixed="left" size="huge">
+      <Container text>
+        <Menu.Item header>
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <meta name="msapplication-TileColor" content="#9f00a7" />
+          <meta name="theme-color" content="#ffffff" />
+          <Image
+            size="mini"
+            floated="left"
+            src="https://res.cloudinary.com/aurix/image/upload/v1594299887/samjam-dark_zhmt4w.png"
+            style={{ marginRight: "1em" }}
+            alt="Logo"
+          />
+          Samjam
+        </Menu.Item>
+        {user && !loading ? (
+          <Link href="/" rel="preload">
+            <Menu.Item header active={isActive("/")}>
+              <Icon as="i" name="dashboard" size="large" />
+              Dashboard
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                {user && !loading ? (
-                    <Link href="/employees" rel="preload">
-                        <Menu.Item header active={isActive("/employees")}>
-                        <Icon
-                                as="i"
-                                name="users"
-                                size="large"
-                            />
-                            Employees
-                        </Menu.Item>
-                    </Link>
-                ) : null}
+        {user && !loading ? (
+          <Link href="/employees" rel="preload">
+            <Menu.Item header active={isActive("/employees")}>
+              <Icon as="i" name="users" size="large" />
+              Employees
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                {user && !loading ? (
-                    <Link href="/newemployee" rel="preload">
-                        <Menu.Item header active={isActive("/newemployee")}>
-                        <Icon
-                                as="i"
-                                name="user plus"
-                                size="large"
-                            />
-                            Add Employee
-                        </Menu.Item>
-                    </Link>
-                ) : null}
+        {user && !loading ? (
+          <Link href="/newemployee" rel="preload">
+            <Menu.Item header active={isActive("/newemployee")}>
+              <Icon as="i" name="user plus" size="large" />
+              Add Employee
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                {user && !loading ? (
-                    <Link href="/performance" rel="preload">
-                        <Menu.Item header active={isActive("/performance")}>
-                            <Icon
-                                name="chart area"
-                                size="large"
-                            />
-                            Performance
-                        </Menu.Item>
-                    </Link>
-                ) : null}
+        {user && !loading ? (
+          <Link href="/performance" rel="preload">
+            <Menu.Item header active={isActive("/performance")}>
+              <Icon name="chart area" size="large" />
+              Performance
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                {user && !loading ? (
-                    <Link href="/contacts" rel="preload">
-                        <Menu.Item header active={isActive("/contacts")}>
-                            <Icon
-                                name="address book"
-                                size="large"
-                            />
-                            Contacts
-                        </Menu.Item>
-                    </Link>
-                ) : null}
+        {user && !loading ? (
+          <Link href="/contacts" rel="preload">
+            <Menu.Item header active={isActive("/contacts")}>
+              <Icon name="address book" size="large" />
+              Contacts
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                {user && !loading ? (
-                    <Link href="/certificates" rel="preload">
-                        <Menu.Item header active={isActive("/certificates")}>
-                            <Icon
-                                name="certificate"
-                                size="large"
-                            />
-                            Certificates
-                        </Menu.Item>
-                    </Link>
-                ) : null}
+        {user && !loading ? (
+          <Link href="/certificates" rel="preload">
+            <Menu.Item header active={isActive("/certificates")}>
+              <Icon name="certificate" size="large" />
+              Certificates
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                {/* <Link href="/training">
+        {/* <Link href="/training">
                     <Menu.Item header active={isActive("/training")}>
                         <Icon
                             name="student"
@@ -117,7 +117,7 @@ function Header() {
                     </Menu.Item>
                 </Link> */}
 
-                {/* <Link href="/userguides">
+        {/* <Link href="/userguides">
                     <Menu.Item header active={isActive("/userguides")}>
                         <Icon
                             name="book"
@@ -127,37 +127,28 @@ function Header() {
                     </Menu.Item>
                 </Link> */}
 
-                {user && !loading ? (
-                    <Link href="/admin" rel="preload">
-                        <Menu.Item header active={isActive("/admin")}>
-                            <Icon
-                                name="cogs"
-                                size="large"
-                            />
-                            Admin
-                        </Menu.Item>
-                    </Link>
-                ): null}
+        {user && !loading ? (
+          <Link href="/admin" rel="preload">
+            <Menu.Item header active={isActive("/admin")}>
+              <Icon name="cogs" size="large" />
+              Admin
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                {user && !loading ? (
-                    <Link href="/api/logout" rel="preload">
-                        <Menu.Item header key="/api/logout">
-                            <Icon
-                                name="sign out"
-                                size="large"
-                            />
-                            Logout
-                        </Menu.Item>
-                    </Link>
-                ) : null}
+        {user && !loading ? (
+          <Link href="/api/logout" rel="preload">
+            <Menu.Item header key="/api/logout">
+              <Icon name="sign out" size="large" />
+              Logout
+            </Menu.Item>
+          </Link>
+        ) : null}
 
-                <div className='version' >
-                    Version 1.6.1
-                </div>
-
-            </Container>
-        </Menu>
-    )
+        <div className="version">Version 1.6.3</div>
+      </Container>
+    </Menu>
+  );
 }
 
-export default Header
+export default Header;

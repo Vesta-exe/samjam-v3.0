@@ -261,7 +261,7 @@ function NewPerformance({
             <Form.Field
               control={Select}
               label="Category"
-              name="incidient"
+              name="incident"
               search
               options={sickOptions}
               placeholder="Category"

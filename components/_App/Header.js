@@ -72,6 +72,15 @@ function Header() {
         ) : null}
 
         {user && !loading ? (
+          <Link href="/archived" rel="preload">
+            <Menu.Item header active={isActive("/archived")}>
+              <Icon as="i" name="users" size="large" />
+              Archived
+            </Menu.Item>
+          </Link>
+        ) : null}
+
+        {user && !loading ? (
           <Link href="/newemployee" rel="preload">
             <Menu.Item header active={isActive("/newemployee")}>
               <Icon as="i" name="user plus" size="large" />
@@ -145,7 +154,7 @@ function Header() {
           </Link>
         ) : null}
 
-        <div className="version">Version 1.6.4</div>
+        <div className="version">Version 1.7.0</div>
       </Container>
     </Menu>
   );

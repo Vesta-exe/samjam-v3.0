@@ -1,13 +1,11 @@
 import React from "react";
 import fetch from "isomorphic-unfetch";
-import EmployeeList from "../components/Employees/EmployeeList";
+import ArchiveList from "../components/Archived/ArchiveList";
 import baseUrl from "../utils/baseUrl";
 import { useFetchUser } from "../utils/user";
 import Router from "next/router";
 
-//TODO: Add Paginagtion in the future maybe?
-
-function Employees({ employeeData }) {
+function Archive({ employeeData }) {
   const { user, loading } = useFetchUser();
 
   if (loading) {
@@ -20,7 +18,7 @@ function Employees({ employeeData }) {
 
   return (
     <>
-      <EmployeeList employees={employeeData} />
+      <ArchiveList employees={employeeData} />
     </>
   );
 }
@@ -34,4 +32,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default Employees;
+export default Archive;

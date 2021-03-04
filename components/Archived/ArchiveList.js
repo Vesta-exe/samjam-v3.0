@@ -1,12 +1,12 @@
 import { Card } from "semantic-ui-react";
 import Link from "next/link";
 
-function EmployeeList({ employees }) {
+function ArchiveList({ employees }) {
   return (
     <div>
       <Card.Group centered itemsPerRow={6} stackable>
         {employees.map((employee) => {
-          if (employee.archived === "No") {
+          if (employee.archived === "Yes") {
             return (
               <div key={employee.id} className="employeeCard">
                 <Link href={`/employee/${employee._id}`}>
@@ -27,4 +27,4 @@ function EmployeeList({ employees }) {
   );
 }
 
-export default EmployeeList;
+export default ArchiveList;

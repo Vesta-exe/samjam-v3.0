@@ -128,13 +128,15 @@ function NewPerformance({
     return err;
   };
 
-  const employeeOptions = employeeData.map((employee) => {
-    return {
-      key: employee.name,
-      value: employee._id,
-      text: employee.name,
-    };
-  });
+  const employeeOptions = employeeData
+    .filter((employee) => employee.archived === "No")
+    .map((employee) => {
+      return {
+        key: employee.name,
+        value: employee._id,
+        text: employee.name,
+      };
+    });
 
   const positiveOptions = positiveData.map((positive) => {
     return {

@@ -129,7 +129,7 @@ function NewPerformance({
   };
 
   const employeeOptions = employeeData
-    .filter((employee) => employee.archived === "No")
+    //.filter((employee) => employee.archived === "No")
     .map((employee) => {
       return {
         key: employee.name,

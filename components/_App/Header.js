@@ -154,7 +154,7 @@ function Header() {
           </Link>
         ) : null}
 
-        <div className="version">Version 1.7.1</div>
+        <div className="version">Version 1.7.2</div>
       </Container>
     </Menu>
   );

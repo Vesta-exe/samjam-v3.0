@@ -67,6 +67,15 @@ function Dashboard() {
             </Segment>
           </Grid.Column>
         </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <Segment raised textAlign="center" color="blue">
+              <h2>Nicole - Intercard</h2>
+              <h2>0434657499</h2>
+              <h2>0408380698</h2>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </>
   );

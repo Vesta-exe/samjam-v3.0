@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
   Form,
   Input,
@@ -8,7 +9,6 @@ import {
   Icon,
   Select,
   Loader,
-  Link,
 } from "semantic-ui-react";
 import baseUrl from "../utils/baseUrl";
 import fetch from "isomorphic-unfetch";

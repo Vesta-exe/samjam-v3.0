@@ -485,6 +485,20 @@ function NewEmployee() {
               onChange={handleSelectChange}
             />
           </Form.Group>
+          <Link href={`/employee/${employee._id}`}>
+            <Button color="red" icon labelPosition="left" floated="right">
+              <Icon name="cancel" />
+              Cancel
+            </Button>
+          </Link>
+          <Form.Field
+            floated="right"
+            control={Button}
+            color="green"
+            icon="pencil alternate"
+            content="Submit"
+            type="submit"
+          />
         </Form>
       )}
     </>

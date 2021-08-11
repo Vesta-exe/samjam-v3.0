@@ -8,7 +8,7 @@ function Dashboard() {
           <Grid.Column>
             <Segment raised textAlign="center" color="blue">
               <h2>Current Safe Code</h2>
-              <h2>123456</h2>
+              <h2>095678</h2>
             </Segment>
           </Grid.Column>
           <Grid.Column>

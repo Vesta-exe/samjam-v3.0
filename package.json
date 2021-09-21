@@ -17,7 +17,7 @@
     "next-pagination": "^2.1.1",
     "node-fetch": "2.6.1",
     "nprogress": "^0.2.0",
-    "object-path": "0.11.5",
+    "object-path": "0.11.8",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-to-print": "^2.11.0",
